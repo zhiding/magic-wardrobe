@@ -313,12 +313,19 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
-                // regionDetection(f, true);
+                regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
-                    setSelect: [20, 60, 140, 180]
+                    setSelect: [0, 0, 0, 0], 
                     }, function() { 
-                    jcrop_api = this; 
-                    thumbnail = this.initComponent('Thumbnailer')
+                    jcrop_api = this;
+                    thumbnail = this.initComponent('Thumbnailer', {width: 100, height: 100});
+                    jcrop_api.container.on('cropmove', function(e, s, c) {
+                        if (c.h > c.w) 
+                            thumbnail.resize(100 * c.w / c.h, 100);
+                        else
+                            thumbnail.resize(100, 100 * c.h / c.w);
+                        
+                    });
                 });
                 $("#region-upload-btn").css("display", "block");
             });
