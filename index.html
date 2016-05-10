@@ -295,11 +295,9 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
-                // readImage(f, true);
+                regionDetection(f, true);
                 $("#search-file").attr({'src': src});
-                jcrop_api.setImage(src, function() {
-                    jcrop_api.setSelect([20, 60, 140, 180]);
-                });
+                jcrop_api.setImage(src);
                 $("#region-upload-btn").css("display", "block");
             });
 
