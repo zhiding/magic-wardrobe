@@ -313,7 +313,7 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
-                // readImage(f, true);
+                // regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [20, 60, 140, 180]
                     }, function() { 

@@ -107,13 +107,20 @@ function uploadImage(image_binary, submit_cb, param_type) {
 function submit(type, info_obj, callback) {
 	pack_str = pack_info(type, info_obj);
 	console.log("query: ../ir/ProcessServlet?algo=c5042&info=", pack_str);
-	$.post("../ir/ProcessServlet", {algo: "c5042", info: pack_str}, callback);
+	$.post("../ir/ProcessServlet", {algo: "c5042", info: pack_str}, callback, "xml");
 }
 
 function callback_uploadImage(result) {
-	// TODO: As the server side code is yet to be implemented, this part will be reimplemented after the 1st command finished.
-	// jcrop_api.setSelect();
-	// window.area = ...
+    // The server is not always on, thus I add this when testing.
+    result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
+    var region_res = [];
+    $(result).find('RESULT').each(function() {
+        region_res.push(parseInt($(this).text()));
+    });
+    region_res[3] += region_res[1]; region_res[2] += region_res[0];
+    console.log(region_res);
+    if (region_res.length != 4) alert("FATAL ERROR");
+    jcrop_api.setSelect(region_res);
 }
 
 // After you modify the region of the query image, you can click on a button, and ...
