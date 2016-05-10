@@ -12,10 +12,10 @@
     <title> Magic Wardrobe - SJTU 2016 </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/portfolio-item.css" rel="stylesheet">
-    <link href="css/jquery.Jcrop.css" rel="stylesheet">
-    <link href="css/pgwslideshow.min.css" rel="stylesheet">
-    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="css/Jcrop.min.css" rel="stylesheet">
+    <link href="css/jquery.flex-images.css" rel="stylesheet">
+    <link href="css/ekko-lightbox.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -262,12 +262,28 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-md-offset-1 col-md-6 col-xs-12">
-                <ul class="slide-show">
-                </ul>
+                <div class="flex-images col-md-offset-1 col-md-6 col-xs-12">
+                  <div class="item" data-w="320" data-h="320"><a href="img/1.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/1.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/2.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/2.jpg"></a></div>
+                  <div class="item" data-w="240" data-h="320"><a href="img/3.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/3.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/4.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/4.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/5.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/5.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/6.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/6.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/7.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/7.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/8.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/8.jpg"></a></div>
+                  <div class="item" data-w="241" data-h="320"><a href="img/9.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/9.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/10.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/10.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/11.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/11.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/12.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/12.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/13.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/13.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/14.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/14.jpg"></a></div>
+                  <div class="item" data-w="320" data-h="320"><a href="img/15.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/15.jpg"></a></div>
+                  <div class="item" data-w="240" data-h="320"><a href="img/16.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/16.jpg"></a></div>
             </div>
         </div>
     </div>
+    </section>
+    <section id="substitudte">
     </section>
     <hr>
         <footer class="text-center">
@@ -278,35 +294,44 @@
             </div>
         </footer>
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.Jcrop.js"></script>
-    <script src="js/pgwslideshow.min.js"></script>
+    <script src="js/Jcrop.min.js"></script>
+    <script src="js/jquery.flex-images.min.js"></script>
+    <script src="js/ekko-lightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
         $(document).ready(function (e) {
-            $("#search-file").Jcrop({}, function() { jcrop_api = this; });
+            $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
                 $('#upload-files').click();
             });
+
             $('#upload-files').on('change', function () {
                 $("#go-search").click();
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
                 // readImage(f, true);
-                $("#search-file").attr({'src': src});
-                jcrop_api.setImage(src, function() {
-                    jcrop_api.setSelect([20, 60, 140, 180]);
+                $("#search-file").attr({'src': src}).Jcrop({
+                    setSelect: [20, 60, 140, 180]
+                    }, function() { 
+                    jcrop_api = this; 
+                    thumbnail = this.initComponent('Thumbnailer')
                 });
                 $("#region-upload-btn").css("display", "block");
             });
 
+            $(".flex-images").flexImages({rowHeight: 140});
+
+            $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+
             $("#region-upload-btn").on('click', function() {
                 $(".tag-predictions-wrap").css("display", "block");
-                $(".slide-show").html("<li><img src='img/1.jpg'></li><li><img src='img/2.jpg'></li><li><img src='img/3.jpg'></li><li><img src='img/4.jpg'></li>");
-                $(".slide-show").pgwSlideshow();
             });
         }); 
         

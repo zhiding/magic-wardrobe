@@ -30,8 +30,8 @@ section:nth-of-type(odd) {
 
 section:nth-of-type(even) {
     background: #f4f4f4;
-    padding-top: 180px;
-    padding-bottom: 180px;
+    padding-top: 120px;
+    padding-bottom: 120px;
     position: relative;
     overflow: hidden;
 }
@@ -178,6 +178,16 @@ input#upload-files {
 
 .tag {
     color: #333;
+}
+
+.jcrop-thumb {
+    top: 15px;
+    right: -20px;
+    border: 1px black solid;
+}
+
+.modal.fade.in {
+    top: 187px;
 }
 
 ul {
