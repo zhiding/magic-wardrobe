@@ -393,6 +393,8 @@
             $('.colorpicker-component').colorpicker({
                 color: '#AA3399',
                 format: 'rgba'
+            }).on('changeColor', function(event) {
+                window.color = event.color.toHSL().h;
             });
 
             $("#region-upload-btn").on('click', function() {
