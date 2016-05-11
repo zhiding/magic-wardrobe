@@ -381,6 +381,7 @@
                 upload_again = 1;
                 $("#region-upload-btn").css("display", "block");
             });
+
             $("#region-upload-btn").on('click', function() {
                 // firstRetrieval();
                 $(".tag-predictions-wrap").css("display", "block");
@@ -391,7 +392,9 @@
                     $(this).ekkoLightbox();
                 });
                 $(".input-group-addon.predict-value").dropdown();
-                $('.colorpicker-component').colorpicker();
+                $('.colorpicker-component').colorpicker().on('changeColor', function(event) {
+                    window.color = event.color.toHSL().h;
+                });
             });
             
             $("#pages").delegate("a", "click", function() {

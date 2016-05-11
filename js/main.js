@@ -13,6 +13,7 @@ var gender = -1;
 var style = -1;
 var color = 0;
 var color_backup = 0;
+var color_set = -1;
 var attrs_backup = new Array(10);
 var attrs = new Array(10);
 var img_addrs = [];
@@ -133,16 +134,16 @@ function firstRetrieval() {
 }
 
 function callback_firstRetrieval(result) {
-    result = "<RESULTS><RESULT>100</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>1</RESULT> \
-    <RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT> \
-    <RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>/a.jpg</RESULT></RESULTS>"
+    result = "<RESULTS><RESULT>256</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
+    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
+    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>/a.jpg</RESULT></RESULTS>"
     var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
     });
     if (tmp.length < 2 || tmp.length < 2 + parseInt(tmp[1])) alert("FATAL ERROR");
-    color = color_backup = parseInt(tmp[0]);
-    for (var i = 2;i < parseInt(tmp[1]);i++)
+    color = color_backup = color_set = parseInt(tmp[0]);
+    for (var i = 2;i < parseInt(tmp[1]) + 2;i++)
     {
         attrs[i - 2] = attrs_backup[i - 2] = parseInt(tmp[i]);
     }
@@ -184,21 +185,73 @@ function toggle_page(k) {
 }
 
 function firstRetrieval_setAttrs() {
-    // set the attributes with the `attrs`, `color` global var
-    // TODO: This will be implemented after the confimation of the attributes' representation
+    var k = 0;
+    console.log(attrs);
+    $(".tag-predictions-wrap select").each(function() {
+        $(this).val(attrs[k]);
+        k++;
+    });
+    var rgb = h2rgb(color);
+    var color_hex = "#";
+    for (var i = 0;i < 3;i++) {
+        var str = rgb[i].toString(16);
+        if (str.length == 1) str = "0" + str; 
+        color_hex += str;
+    }
+    $(".colorpicker-element").colorpicker("setValue", color_hex);
+    console.log("color_hex:", color_hex);
     page_init();
     toggle_page(1);
+}
+
+function rgb2h(r, g, b) {
+    max = Math.max(r, g, b);
+    min = Math.min(r, g, b);
+    var h = 0;
+    if (max == min) h = 0;
+    else if (max == r && g >= b) {
+        h = Math.floor(60 * (g - b) / (max - min));
+    }
+    else if (max == r && g < b) {
+        h = Math.floor(60 * (g - b) / (max - min) + 360);
+    }
+    else if (max == g) {
+        h = Math.floor(60 * (b - r) / (max - min) + 120);
+    }
+    else {
+        h = Math.floor(60 * (r - g) / (max - min) + 240);
+    }
+    return h;
+}
+
+function h2rgb(h) {
+    var hi = Math.floor(h / 60) % 6;
+    var f = h / 60 - hi;
+    var p = 0;
+    var q = parseInt((1 - f) * 255);
+    var t = parseInt(f * 255);
+    var v = 255;
+    
+    switch (hi) {
+        case 0:
+            return [v, t, p];
+        case 1:
+            return [q, v, p];
+        case 2:
+            return [p, v, t];
+        case 3:
+            return [p, q, v];
+        case 4:
+            return [t, p, v];
+        case 5:
+            return [v, p, q];
+    }
 }
 
 function modify_attrs(k, attr) {
 	// do it when you modify the tags of clothes.
 	attrs[k] = attr;
 	if (attr_backup[k] != attr) attrs[k] = -attrs[k];
-}
-
-function modify_hue(hue) {
-	// maybe we need some codes here to transform RGB to HSV?
-	window.color = hue;
 }
 
 function uploadSubPlane(file) {
