@@ -150,7 +150,6 @@ input#upload-files {
 
 .tag-predictions {
     text-align: center;
-    padding: 8px;
 }
 
 .tag-predictions .tag {
@@ -188,6 +187,29 @@ input#upload-files {
 
 .modal.fade.in {
     top: 187px;
+}
+
+.input-group-addon {
+    padding: 3px 3px;
+}
+
+.predict-group {
+    width: 150px;
+    margin: 3px 10px 3px;
+    float: left;
+}
+
+.predict-attr {
+    font-size: 12px;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-right-style: solid !important;
+    border-right-width: 1px !important;
+}
+
+.predict-value {
+    font-size: 10px;
+    cursor: pointer;
 }
 
 ul {
