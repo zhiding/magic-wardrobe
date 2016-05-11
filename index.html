@@ -108,7 +108,7 @@
         </div>
     </div>
     </section>
-    <section class="search" id="search">
+    <section class="search" id="search" style="visibility: hidden;">
     <div class="container text-center">
         <div class="row">
             <div class="col-md-5 col-sm-5 col-xs-12">
@@ -118,7 +118,7 @@
                         </div>
                 </div>
                 <div class="row">
-                        <div class="tag-predictions-wrap" style="display: block;">
+                        <div class="tag-predictions-wrap" style="display: none;">
                             <div class="row title">
                                 <h3 class="text-center"> Predicted Tags </h3>
                             </div>
@@ -297,12 +297,12 @@
                             </div>
                         </div>
                         <div id="region-upload-wrap" class="col-md-offset-4 col-md-4col-xs-12">
-                            <button id="region-upload-btn" class="btn btn-primary btn-filled" style="display:none"> submit </button>
+                            <button id="region-upload-btn" class="btn btn-primary btn-filled"> submit </button>
                         </div>
                     </div>
                 </div>
                 <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
-                    <div class="flex-images">
+                    <div class="flex-images" style="display: none;">
                         <div class="item" data-w="320" data-h="320"><a href="img/1.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/1.jpg"></a></div>
                         <div class="item" data-w="320" data-h="320"><a href="img/2.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/2.jpg"></a></div>
                         <div class="item" data-w="240" data-h="320"><a href="img/3.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/3.jpg"></a></div>
@@ -351,6 +351,7 @@
             var upload_again = 0;
             // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
+                $("#search").css("visibility", "visible");
                 $('#upload-files').click();
             });
 
@@ -362,7 +363,7 @@
                 if (upload_again === 1) {
                     jcrop_api.destroy();
                 }
-                regionDetection(f, true);
+                //regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src
@@ -380,24 +381,17 @@
                 upload_again = 1;
                 $("#region-upload-btn").css("display", "block");
             });
-
-            $(".flex-images").flexImages({rowHeight: 140});
-
-            $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
-
-            $(".input-group-addon.predict-value").dropdown();
-
-            $('.colorpicker-component').colorpicker({
-                color: '#AA3399',
-                format: 'rgba'
-            });
-
             $("#region-upload-btn").on('click', function() {
-                firstRetrieval();
+                // firstRetrieval();
                 $(".tag-predictions-wrap").css("display", "block");
+                $(".flex-images").css("display", "block");
+                $(".flex-images").flexImages({rowHeight: 140});
+                $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+                $(".input-group-addon.predict-value").dropdown();
+                $('.colorpicker-component').colorpicker();
             });
             
             $("#pages").delegate("a", "click", function() {
