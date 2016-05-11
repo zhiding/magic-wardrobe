@@ -11,11 +11,14 @@ attr_areas[1] = [0,0,0,0];
 // TODO: when users set the front-end attributes, those values should be modified.
 var gender = -1;
 var style = -1;
-var attr_str = "";
 var color = 0;
 var color_backup = 0;
 var attrs_backup = new Array(10);
 var attrs = new Array(10);
+var img_addrs = [];
+
+var perCount = 10;
+var pageCount = 0;
 
 // pack_info, uploadImage, submit are functions to communicate with server.
 
@@ -117,7 +120,6 @@ function callback_uploadImage(result) {
     $(result).find('RESULT').each(function() {
         region_res.push(parseInt($(this).text()));
     });
-    region_res[3] += region_res[1]; region_res[2] += region_res[0];
     console.log(region_res);
     if (region_res.length != 4) alert("FATAL ERROR");
     jcrop_api.setSelect(region_res);
@@ -125,15 +127,66 @@ function callback_uploadImage(result) {
 
 // After you modify the region of the query image, you can click on a button, and ...
 function firstRetrieval() {
-	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area: jcrop_api.tellSelect()};
+    var selection = jcrop_api.getSelection();
+	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: [selection.x,selection.y,selection.w,selection.h]};
 	submit(0, info_obj, callback_firstRetrieval);
 }
 
 function callback_firstRetrieval(result) {
-	// TODO: Give color, attrs, imgaddrs to client.
-	// color = ...; color_backup = ...;
-	// attrs = ...; attr_backup = ...;
-	// set color, attrs in front-end, and show images too.
+    result = "<RESULTS><RESULT>100</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>1</RESULT> \
+    <RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT> \
+    <RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>1</RESULT><RESULT>/a.jpg</RESULT></RESULTS>"
+    var tmp = [];
+    $(result).find('RESULT').each(function() {
+        tmp.push($(this).text());
+    });
+    if (tmp.length < 2 || tmp.length < 2 + parseInt(tmp[1])) alert("FATAL ERROR");
+    color = color_backup = parseInt(tmp[0]);
+    for (var i = 2;i < parseInt(tmp[1]);i++)
+    {
+        attrs[i - 2] = attrs_backup[i - 2] = parseInt(tmp[i]);
+    }
+    img_addrs = [];
+    for (var i = 2 + parseInt(tmp[1]);i < 29;i++)
+    {
+        // TODO: result here
+        img_addrs.push("img/" + (i - 11) + ".jpg");
+    }
+    firstRetrieval_setAttrs();
+}
+
+function page_init() {
+    $("#pages").html("");
+    pageCount = Math.ceil(img_addrs.length / perCount);
+    var $page = $("<ul class='pagination'></ul>");
+    $page.append("<li><a data-id='-1' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
+    for (var i = 0;i < pageCount;i++)
+    {
+        $page.append("<li><a data-id='" + (i + 1) + "'>" + (i + 1) + "</a></li>");
+    }
+    $page.append("<li><a data-id='-1' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
+    $("#pages").append($page);
+}
+
+function toggle_page(k) {
+    if (k < 0) return;
+    $(".flex-images").html("");
+    for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
+    {
+        var dom = '<div class="item"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
+        $(".flex-images").append(dom);
+    }
+    $("#pages li").removeClass("active");
+    $("#pages a:first").attr("data-id", (k - 1) > 0 ? k - 1 : -1);
+    $("#pages a:last").attr("data-id", k + 1 > pageCount ? -1 : k + 1);
+    $("#pages a[data-id=" + k + "]").parent().addClass("active");
+}
+
+function firstRetrieval_setAttrs() {
+    // set the attributes with the `attrs`, `color` global var
+    // TODO: This will be implemented after the confimation of the attributes' representation
+    page_init();
+    toggle_page(1);
 }
 
 function modify_attrs(k, attr) {
