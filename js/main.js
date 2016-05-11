@@ -173,12 +173,13 @@ function toggle_page(k) {
     $(".flex-images").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var dom = '<div class="item"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
+        var dom = '<div class="item" data-w="320" data-h="320"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
         $(".flex-images").append(dom);
     }
+    $(".flex-images").flexImages({rowHeight: 140});
     $("#pages li").removeClass("active");
-    $("#pages a:first").attr("data-id", (k - 1) > 0 ? k - 1 : -1);
-    $("#pages a:last").attr("data-id", k + 1 > pageCount ? -1 : k + 1);
+    $("#pages a:first").attr("data-id", (k - 1 > 0) ? k - 1 : -1);
+    $("#pages a:last").attr("data-id", (k + 1 > pageCount) ? -1 : k + 1);
     $("#pages a[data-id=" + k + "]").parent().addClass("active");
 }
 

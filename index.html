@@ -368,7 +368,7 @@
                 if (upload_again === 1) {
                     jcrop_api.destroy();
                 }
-                // regionDetection(f, true);
+                regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src
@@ -400,7 +400,7 @@
             });
             
             $("#pages").delegate("a", "click", function() {
-                toggle_page($(this).attr("data-id"));
+                toggle_page(parseInt($(this).attr("data-id")));
             })
         }); 
         
