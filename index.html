@@ -117,11 +117,57 @@
                         </div>
                 </div>
                 <div class="row">
-                        <div class="tag-predictions-wrap" style="display: none;">
+                        <div class="tag-predictions-wrap" style="display: block;">
                             <div class="row title">
                                 <h3 class="text-center"> Predicted Tags </h3>
                             </div>
                             <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Color</span>
+                                <span class="predict-value input-group-addon">Multicolor</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute2</span>
+                                <span class="predict-value input-group-addon">Standard</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute3</span>
+                                <span class="predict-value input-group-addon">Spell color</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute4</span>
+                                <span class="predict-value input-group-addon">Polyester</span>
+                                </div>
+                            </div>
+                            <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute5</span>
+                                <span class="predict-value input-group-addon">Notched</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute6</span>
+                                <span class="predict-value input-group-addon">Middle-length</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute7</span>
+                                <span class="predict-value input-group-addon">Double-breasted</span>
+                                </div>
+                            </div>
+                            <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute8</span>
+                                <span class="predict-value input-group-addon">South Korean</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute9</span>
+                                <span class="predict-value input-group-addon">Middle-aged</span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute10</span>
+                                <span class="predict-value input-group-addon">Windbreak-F</span>
+                                </div>
+                            </div>
+                            <div>
                                 <ul class="list-inline">
                                     <li class="tag">
                                         <select id="attr1">
@@ -308,7 +354,8 @@
     <script src="js/main.js"></script>
     <script type="text/javascript">
         $(document).ready(function (e) {
-            $("section").css({"height": $(window).height()});
+            var upload_again = 0;
+            // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
                 $('#upload-files').click();
             });
@@ -318,9 +365,13 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
-                regionDetection(f, true);
+                if (upload_again === 1) {
+                    jcrop_api.destroy();
+                }
+                // regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
-                    setSelect: [0, 0, 0, 0], 
+                    setSelect: [0, 0, 0, 0],
+                    setImage: src
                     }, function() { 
                     jcrop_api = this;
                     thumbnail = this.initComponent('Thumbnailer', {width: 100, height: 100});
@@ -332,6 +383,7 @@
                         
                     });
                 });
+                upload_again = 1;
                 $("#region-upload-btn").css("display", "block");
             });
 
