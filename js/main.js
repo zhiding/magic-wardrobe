@@ -177,9 +177,7 @@ function toggle_page(k) {
     $(".flex-images").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var img_w = img.width;
-        var img_h = img.height;
-        var dom = '<div class="item" data-w="320" data-h="320"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
+        var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][1] + '"><a href="' + img_addrs[i][0] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i][0] + '"></a></div>';
         $(".flex-images").append(dom);
     }
     $(".flex-images").flexImages({rowHeight: 140});
