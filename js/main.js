@@ -174,14 +174,10 @@ function toggle_page(k) {
     $(".flex-images").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var img = new Image();
-        img.src = img_addrs[i];
-        img.on('load', function() {
-            var img_w = img.width;
-            var img_h = img.height;
-            var dom = '<div class="item" data-w="' + img_w + '" data-h="' + img_h + '"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
-            $(".flex-images").append(dom);
-        });
+        var img_w = img.width;
+        var img_h = img.height;
+        var dom = '<div class="item" data-w="320" data-h="320"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
+        $(".flex-images").append(dom);
     }
     $(".flex-images").flexImages({rowHeight: 140});
     $("#pages li").removeClass("active");
