@@ -119,7 +119,7 @@
                         </div>
                 </div>
                 <div class="row">
-                        <div class="search tag-predictions-wrap" style="display: none;">
+                        <div class="tag-predictions-wrap" style="display: none;">
                             <div class="row title">
                                 <h3 class="text-center"> Predicted Tags </h3>
                             </div>
@@ -297,7 +297,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="region-upload-wrap" class="col-md-offset-4 col-md-4col-xs-12">
+                        <div id="region-upload-wrap" class="col-md-offset-4 col-md-4 col-xs-12">
                             <button id="region-upload-btn" class="btn btn-primary btn-filled"> search </button>
                             <a id="go-substitute" href="#substitute" class="btn btn-circle page-scroll"></a>
                         </div>
@@ -329,19 +329,229 @@
         </div>
     </div>
     </section>
-    <section id="substitute" class="substitude">
+    <section class="substitute" id="substitute" style="visibility: visible;">
     <div class="container text-center">
         <div class="row">
-            <div class="col-md-5 col-sm-5 col-xs-12">
+            <div class="col-md-5 col-sm-12">
                 <div class="row">
-                    <div class="sub-image-wrap">
-                        <img id="sub-origin-file" class="img-responsive" src="" alt="">
-                    </div>
+                        <div class="col-md-5 search-image-wrap">
+                            <img id="sub-origin-file" class="img-responsive" src="" alt="">
+                          </div>
+                        <div class="col-md-5 search-image-wrap">
+                          <img id="sub-upload-file" class="img-responsive" src="img/1.jpg" alt="">
+                        </div>
                 </div>
                 <div class="row">
-                    <div class="sub-image-wrap">
-                        <img id="sub-file" class="img-responsive" src="" alt"">
+                        <div class="tag-predictions-wrap" style="display: none;">
+                            <div class="row title">
+                                <h3 class="text-center"> Predicted Tags </h3>
+                            </div>
+                            <div class="row tag-predictions">
+                              <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Color</span>
+                                <span class="select predict-value input-group-addon">
+                                    <select class="form-control">
+                                            <option value="1">Multicolor</option>
+                                            <option value="2">White</option>
+                                            <option value="3">Red</option>
+                                            <option value="4">Pink</option>
+                                            <option value="5">Purple</option>
+                                            <option value="6">Orange</option>
+                                            <option value="7">Brown</option>
+                                            <option value="8">Green</option>
+                                            <option value="9">Blue</option>
+                                            <option value="10">Black</option>
+                                            <option value="11">Gray</option>
+                                            <option value="12">Yellow</option>
+                                            <option value="13">Khaki</option>
+                                    </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute2</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Slim</option>
+                                            <option value="2">Standard</option>
+                                            <option value="3">Loose</option>
+                                            <option value="4">Others</option>
+                                            <option value="5">Cloak</option>
+                                            <option value="6">Shawl</option>
+                                        </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute3</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Plaid</option>
+                                            <option value="2">Solid</option>
+                                            <option value="3">Dot</option>
+                                            <option value="4">Stripe</option>
+                                            <option value="5">Flower</option>
+                                            <option value="6">Geometry</option>
+                                            <option value="7">Animal</option>
+                                            <option value="8">Spell color</option>
+                                            <option value="9">Letter</option>
+                                            <option value="10">Cartoon</option>
+                                            <option value="11">Character</option>
+                                            <option value="12">Others</option>
+                                        </select>
+                                      </span>
+                                </div>
+                            </div>
+                            <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute4</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Nylon</option>
+                                            <option value="2">Silk</option>
+                                            <option value="3">Linen</option>
+                                            <option value="4">Others</option>
+                                            <option value="5">Cotton</option>
+                                            <option value="6">Down</option>
+                                            <option value="7">Woolen</option>
+                                            <option value="8">Polyester</option>
+                                        </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute5</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Notched</option>
+                                            <option value="2">V-neck</option>
+                                            <option value="3">Stand</option>
+                                            <option value="4">Shirt</option>
+                                            <option value="5">High</option>
+                                            <option value="6">Round</option>
+                                            <option value="7">Others</option>
+                                            <option value="8">Hooded</option>
+                                        </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute6</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Long</option>
+                                            <option value="2">Short</option>
+                                            <option value="3">Sleeveless</option>
+                                            <option value="4">Middle-length</option>
+                                            <option value="5">Speaker</option>
+                                            <option value="6">Raglan</option>
+                                            <option value="7">Lantern</option>
+                                            <option value="8">Others</option>
+                                            <option value="9">Detachable</option>
+                                        </select>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute7</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Lacing</option>
+                                            <option value="2">Horn-button</option>
+                                            <option value="3">Others</option>
+                                            <option value="4">Zip</option>
+                                            <option value="5">double-breasted</option>
+                                            <option value="6">single-breasted</option>
+                                        </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute8</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">South Korean</option>
+                                            <option value="2">Leisure</option>
+                                            <option value="3">Business</option>
+                                            <option value="4">Others</option>
+                                            <option value="5">Sport</option>
+                                            <option value="6">Sweet</option>
+                                            <option value="7">Elegant</option>
+                                            <option value="8">Charming</option>
+                                            <option value="9">European</option>
+                                            <option value="10">Punk</option>
+                                            <option value="11">Military</option>
+                                        </select>
+                                </span>
+                                </div>
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute9</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Teenager</option>
+                                            <option value="2">Youth</option>
+                                            <option value="3">Middle-aged</option>
+                                            <option value="4">Elderly</option>
+                                        </select>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="row tag-predictions">
+                                <div class="predict-group">
+                                <span class="predict-attr input-group-addon">Attribute10</span>
+                                <span class="select predict-value input-group-addon">
+                                        <select class="form-control">
+                                            <option value="1">Suit_M</option>
+                                            <option value="2">Suit_F</option>
+                                            <option value="3">Eiderdown_M</option>
+                                            <option value="4">Eiderdown_F</option>
+                                            <option value="5">Windbreaker_M</option>
+                                            <option value="6">Windbreaker_F</option>
+                                            <option value="7">Vest_M</option>
+                                            <option value="8">Vest_F</option>
+                                            <option value="9">Shirt_M</option>
+                                            <option value="10">Shirt_F</option>
+                                            <option value="11">T-shirt_M</option>
+                                            <option value="12">T-shirt_F</option>
+                                            <option value="13">Coat_M</option>
+                                            <option value="14">Jacket_F</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="predict-group input-group colorpicker-component">
+                                <span class="color input-group-addon"><i></i></span>
+                                <input type="text" value="#00AABB" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                        <div class="row">
+                        <div class="col-md-offset-1 col-md-4 col-xs-12">
+                            <input class="btn btn-primary btn-filled input-wide" type="button" id="sub-upload-btn" value="Upload">
+                            <input type="file" class="send-form" id="sub-upload-files" name="files[]" data-url="#" style="display: none;" multiple>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                          <button id="sub-search-btn" class="btn btn-primary btn-filled"> search </button>
+                        </div>
+                      </div>
+                </div>
+                <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
+                    <div class="flex-images" style="display: none;">
+                        <div class="item" data-w="320" data-h="320"><a href="img/1.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/1.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/2.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/2.jpg"></a></div>
+                        <div class="item" data-w="240" data-h="320"><a href="img/3.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/3.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/4.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/4.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/5.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/5.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/6.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/6.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/7.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/7.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/8.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/8.jpg"></a></div>
+                        <div class="item" data-w="241" data-h="320"><a href="img/9.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/9.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/10.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/10.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/11.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/11.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/12.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/12.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/13.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/13.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/14.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/14.jpg"></a></div>
+                        <div class="item" data-w="320" data-h="320"><a href="img/15.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/15.jpg"></a></div>
+                        <div class="item" data-w="240" data-h="320"><a href="img/16.jpg" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="img/16.jpg"></a></div>
                     </div>
+                    <nav id="pages">
+                    </nav>
                 </div>
             </div>
         </div>
@@ -368,10 +578,17 @@
         $(document).ready(function (e) {
             var upload_again = 0;
             var is_search = 0;
+            var upload_src;
+            var sub_ori_jcrop;
+            var sub_upload_jcrop;
             // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
                 $("#search").css("visibility", "visible");
                 $('#upload-files').click();
+            });
+
+            $("#sub-upload-btn").on('click', function () {
+                $("#sub-upload-files").click();
             });
 
             $('#upload-files').on('change', function () {
@@ -379,10 +596,11 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
+                upload_src = src;
                 if (upload_again === 1) {
                     jcrop_api.destroy();
                 }
-                regionDetection(f, true);
+                // regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src,
@@ -406,6 +624,19 @@
                 $(".flex-images").css("display", "none");
             });
 
+            $("#sub-upload-files").on("change", function() {
+                var f = this.files[0];
+                if (!f) return;
+                var src = window.URL.createObjectURL(f);
+                $("#sub-upload-file").attr({"src": src}).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: src,
+                    boxHeight: 200
+                    }, function() {
+                    sub_upload_jcrop = this;
+                });
+            });
+
             $("#region-upload-btn").on('click', function() {
                 if (is_search === 0) {
                     // firstRetrieval();
@@ -427,8 +658,14 @@
                     is_search = 0;
                     $(this).html('Search');
                     $("#go-substitute").click();
+                    $("#sub-origin-file").attr({"src": upload_src}).Jcrop({
+                        setSelect: [0, 0, 0, 0],
+                        setImage: upload_src,
+                        boxHeight: 200
+                        }, function () {
+                        sub_ori_jcrop = this;
+                    });
                 }
-
             });
             
             $("#pages").delegate("a", "click", function() {

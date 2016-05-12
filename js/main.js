@@ -190,7 +190,8 @@ function toggle_page(k) {
 function firstRetrieval_setAttrs() {
     var k = 0;
     console.log(attrs);
-    $(".search select").each(function() {
+    $("#search select").each(function() {
+        $(this).attr("disabled", true);
         $(this).val(attrs[k]);
         k++;
     });
