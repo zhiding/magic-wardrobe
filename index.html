@@ -3,6 +3,7 @@
 
 <head>
 
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -363,7 +364,7 @@
                 if (upload_again === 1) {
                     jcrop_api.destroy();
                 }
-                //regionDetection(f, true);
+                regionDetection(f, true);
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src
@@ -383,7 +384,7 @@
             });
 
             $("#region-upload-btn").on('click', function() {
-                // firstRetrieval();
+                firstRetrieval();
                 $(".tag-predictions-wrap").css("display", "block");
                 $(".flex-images").css("display", "block");
                 $(".flex-images").flexImages({rowHeight: 140});

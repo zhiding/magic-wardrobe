@@ -111,12 +111,13 @@ function uploadImage(image_binary, submit_cb, param_type) {
 function submit(type, info_obj, callback) {
 	pack_str = pack_info(type, info_obj);
 	console.log("query: ../ir/ProcessServlet?algo=c5042&info=", pack_str);
-	$.post("../ir/ProcessServlet", {algo: "c5042", info: pack_str}, callback, "xml");
+	// $.post("../ir/ProcessServlet", {algo: "c5042", info: pack_str}, callback, "xml");
+    $.ajax({type: "POST", url: "../ir/ProcessServlet", data: {algo: "c5042", info: pack_str}, contentType: "application/x-www-form-urlencoded;charset=utf-8", dataType: "xml", success: callback});
 }
 
 function callback_uploadImage(result) {
     // The server is not always on, thus I add this when testing.
-    result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
+    // result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
     var region_res = [];
     $(result).find('RESULT').each(function() {
         region_res.push(parseInt($(this).text()));
@@ -134,9 +135,11 @@ function firstRetrieval() {
 }
 
 function callback_firstRetrieval(result) {
+    /*
     result = "<RESULTS><RESULT>256</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
     <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
-    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>/a.jpg</RESULT></RESULTS>"
+    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>/a.jpg</RESULT></RESULTS>";
+    */
     var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
@@ -148,10 +151,10 @@ function callback_firstRetrieval(result) {
         attrs[i - 2] = attrs_backup[i - 2] = parseInt(tmp[i]);
     }
     img_addrs = [];
-    for (var i = 2 + parseInt(tmp[1]);i < 29;i++)
+    for (var i = 2 + parseInt(tmp[1]);i < tmp.length;i += 3)
     {
         // TODO: result here
-        img_addrs.push("img/" + (i - 11) + ".jpg");
+        img_addrs.push([tmp[i], tmp[i+1], tmp[i+2]]);
     }
     firstRetrieval_setAttrs();
 }
@@ -174,14 +177,8 @@ function toggle_page(k) {
     $(".flex-images").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var img = new Image();
-        img.src = img_addrs[i];
-        img.on('load', function() {
-            var img_w = img.width;
-            var img_h = img.height;
-            var dom = '<div class="item" data-w="' + img_w + '" data-h="' + img_h + '"><a href="' + img_addrs[i] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i] + '"></a></div>';
+            var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][2] + '"><a href="' + img_addrs[i][0] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i][0] + '"></a></div>';
             $(".flex-images").append(dom);
-        });
     }
     $(".flex-images").flexImages({rowHeight: 140});
     $("#pages li").removeClass("active");
@@ -193,7 +190,7 @@ function toggle_page(k) {
 function firstRetrieval_setAttrs() {
     var k = 0;
     console.log(attrs);
-    $(".tag-predictions-wrap select").each(function() {
+    $(".search select").each(function() {
         $(this).val(attrs[k]);
         k++;
     });
