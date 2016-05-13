@@ -18,7 +18,7 @@ var attrs_backup = new Array(10);
 var attrs = new Array(10);
 var img_addrs = [];
 
-var perCount = 10;
+var perCount = 16;
 var pageCount = 0;
 
 // pack_info, uploadImage, submit are functions to communicate with server.
@@ -191,6 +191,12 @@ function firstRetrieval_setAttrs() {
     var k = 0;
     console.log(attrs);
     $("#search select").each(function() {
+        $(this).attr("disabled", true);
+        $(this).val(attrs[k]);
+        k++;
+    });
+    k = 0; 
+    $("#substitute select").each(function() {
         $(this).attr("disabled", true);
         $(this).val(attrs[k]);
         k++;
