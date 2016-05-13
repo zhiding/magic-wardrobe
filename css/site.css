@@ -234,6 +234,10 @@ select.form-control {
     padding: 1px;
 }
 
+#sub-upload-file {
+    cursor: pointer;
+}
+
 ul {
     list-style: none;
     padding: 0;
