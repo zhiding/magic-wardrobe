@@ -1,7 +1,7 @@
 var imageBinary = "";
 var imgUrl = "";
 var imgSubPlane = "";
-var jcrop_api, attr_jcrop;
+var jcrop_api, sub_upload_jcrop, sub_ori_jcrop;
 var alo = 3;
 var nu = 10;
 var attr_areas = new Array();
@@ -17,6 +17,7 @@ var color_set = -1;
 var attrs_backup = new Array(10);
 var attrs = new Array(10);
 var img_addrs = [];
+var img_addrs_2 = [];
 
 var perCount = 16;
 var pageCount = 0;
@@ -27,10 +28,10 @@ var pageCount = 0;
 pack_info:
 pack up the info of type `type` to a string.
 info_obj{type == 0}:
-{"gender": <0/1/-1>, "style": <1~7/-1>, "area": [x1,y1,w,h], 
+{"gender": <0/1/-1>, "style": <1~7/-1>, "area_arr": [x1,y1,w,h], 
 "imgurl": <server side url>}
 info_obj{type == 1}:
-{"gender": <0/1/-1>, "style": <1~7/-1>, "area": [x1,y1,w,h], 
+{"gender": <0/1/-1>, "style": <1~7/-1>, "area_arr": [x1,y1,w,h], 
 "imgurl": <server side url>, "attr": [attr1,attr2,……], 
 "hue": <Hue>, "subPlaneUrl": <SubPlaneUrl>, 
 "img_replace_area": [x1,y1,w,h], "sub_replace_area": [x1,y1,w,h]}
@@ -83,7 +84,7 @@ function regionDetection(file) {
 			submit(2, info_obj, callback_uploadImage);
 		}, 0);
     }
-	subPlaneUrl = "";
+	imgSubPlane = "";
     reader.readAsDataURL(file);
 }
 
@@ -117,7 +118,7 @@ function submit(type, info_obj, callback) {
 
 function callback_uploadImage(result) {
     // The server is not always on, thus I add this when testing.
-    // result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
+    result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
     var region_res = [];
     $(result).find('RESULT').each(function() {
         region_res.push(parseInt($(this).text()));
@@ -135,11 +136,9 @@ function firstRetrieval() {
 }
 
 function callback_firstRetrieval(result) {
-    /*
     result = "<RESULTS><RESULT>256</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
     <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
-    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>/a.jpg</RESULT></RESULTS>";
-    */
+    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>img/1.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
     var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
@@ -174,13 +173,13 @@ function page_init() {
 
 function toggle_page(k) {
     if (k < 0) return;
-    $(".flex-images").html("");
+    $("#image-show-1").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
         var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][1] + '"><a href="' + img_addrs[i][0] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs[i][0] + '"></a></div>';
-        $(".flex-images").append(dom);
+        $("#image-show-1").append(dom);
     }
-    $(".flex-images").flexImages({rowHeight: 140});
+    $("#image-show-1").flexImages({rowHeight: 140});
     $("#pages li").removeClass("active");
     $("#pages a:first").attr("data-id", (k - 1 > 0) ? k - 1 : -1);
     $("#pages a:last").attr("data-id", (k + 1 > pageCount) ? -1 : k + 1);
@@ -191,13 +190,13 @@ function firstRetrieval_setAttrs() {
     var k = 0;
     console.log(attrs);
     $("#search select").each(function() {
-        $(this).attr("disabled", true);
+        $(this).prop("disabled", true);
         $(this).val(attrs[k]);
         k++;
     });
     k = 0; 
     $("#substitute select").each(function() {
-        $(this).attr("disabled", true);
+        $(this).prop("disabled", false);
         $(this).val(attrs[k]);
         k++;
     });
@@ -258,12 +257,6 @@ function h2rgb(h) {
     }
 }
 
-function modify_attrs(k, attr) {
-	// do it when you modify the tags of clothes.
-	attrs[k] = attr;
-	if (attr_backup[k] != attr) attrs[k] = -attrs[k];
-}
-
 function uploadSubPlane(file) {
 	var reader = new FileReader();
     reader.onload = function() {
@@ -280,12 +273,66 @@ function uploadSubPlane(file) {
 "img_replace_area": [x1,y1,w,h], "sub_replace_area": [x1,y1,w,h]}
 */
 function secondRetrieval() {
-	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area: jcrop_api.tellSelect(), attr: attrs,
-			hue: (color == color_backup) ? -1 : color, subPlaneUrl: subPlaneUrl, 
+    var selection = jcrop_api.getSelection();
+    var selection_arr = [selection.x,selection.y,selection.w,selection.h];
+    
+    if (imgSubPlane != "")
+    {
+        var selection_a = sub_ori_jcrop.getSelection();
+        attr_areas[0] = [selection_a.x,selection_a.y,selection_a.w,selection_a.h];
+        selection_a = sub_upload_jcrop.getSelection();
+        attr_areas[1] = [selection_a.x,selection_a.y,selection_a.w,selection_a.h];
+    }
+    var k = 0;
+    $("#substitute select").each(function() {
+        if ($(this).val() != attrs_backup[k]) attrs[k] = -$(this).val();
+        k++;
+    });
+	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: selection_arr, attr: attrs,
+			hue: (color == color_backup) ? -1 : color, subPlaneUrl: imgSubPlane, 
 			img_replace_area: attr_areas[0], sub_replace_area: attr_areas[1]};
 	submit(1, info_obj, callback_secondRetrieval);
 }
 
 function callback_secondRetrieval(result) {
-	// TODO: Just show the imgaddrs to the user!
+	result = "<RESULTS><RESULT>img/2.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
+    var tmp = [];
+    $(result).find('RESULT').each(function() {
+        tmp.push($(this).text());
+    });
+    img_addrs_2 = [];
+    for (var i = 0;i < tmp.length;i += 3)
+    {
+        img_addrs_2.push([tmp[i], tmp[i+1], tmp[i+2]]);
+    }
+    page_init_2();
+    toggle_page_2(1);
+}
+
+function page_init_2() {
+    $("#pages-2").html("");
+    pageCount = Math.ceil(img_addrs.length / perCount);
+    var $page = $("<ul class='pagination'></ul>");
+    $page.append("<li><a data-id='-1' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
+    for (var i = 0;i < pageCount;i++)
+    {
+        $page.append("<li><a data-id='" + (i + 1) + "'>" + (i + 1) + "</a></li>");
+    }
+    $page.append("<li><a data-id='-1' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
+    $("#pages-2").append($page);
+}
+
+function toggle_page_2(k) {
+    if (k < 0) return;
+    $("#image-show-2").html("");
+    for (var i = (k - 1) * perCount;i < Math.min(img_addrs_2.length, k * perCount);i++)
+    {
+        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][1] + '"><a href="' + img_addrs_2[i][0] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs_2[i][0] + '"></a></div>';
+        $("#image-show-2").append(dom);
+    }
+    $("#image-show-2").flexImages({rowHeight: 140});
+    $("#pages-2 li").removeClass("active");
+    $("#pages-2 a:first").attr("data-id", (k - 1 > 0) ? k - 1 : -1);
+    $("#pages-2 a:last").attr("data-id", (k + 1 > pageCount) ? -1 : k + 1);
+    $("#pages-2 a[data-id=" + k + "]").parent().addClass("active");
 }

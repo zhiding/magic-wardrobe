@@ -304,7 +304,7 @@
                     </div>
                 </div>
                 <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
-                    <div class="flex-images" style="display: none;">
+                    <div class="flex-images" id="image-show-1" style="display: none;">
                         <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/1.jpg"></div>
                         <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/2.jpg"></div>
                         <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/3.jpg"></div>
@@ -529,7 +529,7 @@
                       </div>
                 </div>
                 <div class="flex-images-wrapper col-md-offset-1 col-md-5 col-xs-12">
-                    <div class="flex-images" style="display: none;">
+                    <div class="flex-images" id="image-show-2" style="display: none;">
                         <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/1.jpg"></div>
                         <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/2.jpg"></div>
                         <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/3.jpg"></div>
@@ -547,7 +547,7 @@
                         <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/15.jpg"></div>
                         <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/16.jpg"></div>
                     </div>
-                    <nav id="pages">
+                    <nav id="pages-2">
                     </nav>
                 </div>
             </div>
@@ -576,8 +576,6 @@
             var upload_again = 0;
             var is_search = 0;
             var upload_src;
-            var sub_ori_jcrop;
-            var sub_upload_jcrop;
             // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
                 $("#search").css("visibility", "visible");
@@ -621,6 +619,7 @@
                 var f = this.files[0];
                 if (!f) return;
                 var src = window.URL.createObjectURL(f);
+                uploadSubPlane(f);
                 $("#sub-upload-file").attr({"src": src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src,
@@ -642,7 +641,7 @@
                     // });
                     $(".input-group-addon.predict-value").dropdown();
                     $('.colorpicker-component').colorpicker().on('changeColor', function(event) {
-                        window.color = event.color.toHSL().h;
+                        window.color = parseInt(event.color.toHSL().h * 360);
                     });
                     is_search = 1;
                     $(this).html('Continue');
@@ -681,6 +680,10 @@
                     }, function () {
                     jcrop_api = this;
                 });
+            });
+            
+            $("#sub-search-btn").on("click", function() {
+                secondRetrieval();
             });
 
             $("#sub-upload-file").bind("click", function() {
