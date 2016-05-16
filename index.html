@@ -694,6 +694,10 @@
                     sub_ori_jcrop = this;
                     click_continue = 1;
                 });
+                setImgUrl(s);
+                is_search = 0;
+                click_continue = 1;
+                $("#region-upload-btn").html('Search');
             });
             
             $("#sub-search-btn").on("click", function() {
