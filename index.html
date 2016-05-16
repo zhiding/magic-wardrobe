@@ -338,7 +338,7 @@
                             <img id="sub-origin-file" class="img-responsive" src="" alt="">
                           </div>
                         <div class="col-md-5 search-image-wrap">
-                          <img id="sub-upload-file" class="img-responsive" src="img/upload.png" style="margin-top: 50px; max-width: 100px;"></img>
+                          <img id="sub-upload-file" class="img-responsive" src="img/upload.png" style="margin-top: 50px; max-width: 100px; max-height: 100px"></img>
                         </div>
                 </div>
                 <div class="row">
@@ -575,11 +575,16 @@
         $(document).ready(function (e) {
             var upload_again = 0;
             var is_search = 0;
+            var is_second_search = 0;
             var click_continue = 0;
             var upload_src;
             // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
                 $("#search").css("visibility", "visible");
+                if (is_second_search == 1) {
+                    sub_upload_jcrop.destroy();
+                    $("#sub-upload-file").attr({"src":"img/upload.png"});
+                }
                 $('#upload-files').click();
             });
 
@@ -628,6 +633,7 @@
                     }, function() {
                     sub_upload_jcrop = this;
                 });
+                is_second_search = 1;
             });
 
             $("#region-upload-btn").on('click', function() {
