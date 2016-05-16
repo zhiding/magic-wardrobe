@@ -575,6 +575,7 @@
         $(document).ready(function (e) {
             var upload_again = 0;
             var is_search = 0;
+            var click_continue = 0;
             var upload_src;
             // $("section").css({"height": $(window).height()});
             $('#upload-files-visual').on('click', function () {
@@ -648,6 +649,7 @@
                 }
                 else {
                     is_search = 0;
+                    click_continue = 1;
                     $(this).html('Search');
                     $("#go-substitute").click();
                     $("#sub-origin-file").attr({"src": upload_src}).Jcrop({
@@ -659,26 +661,38 @@
                     });
                 }
             });
-
-            $("img.search-result").hover(function(e) {
+            $(document).delegate("img.search-result", "mouseenter", function() {
                 var s = $(this).attr("src");
                 var tp = $(this).offset().top+40;
                 var lt = $(this).offset().left+40;
                 $("body").append("<img class='imghover' src='"+s+"'/>");
                 $(".imghover").css({"position": "absolute", "top":tp+'px', "left":lt+'px'}).fadeTo("slow", 1);
-                }, function() {
+            });
+            $(document).delegate("img.search-result", "mouseleave", function() {
                 $(".imghover").remove();
             });
-
-            $("img.search-result").on("click", function() {
+            
+            $(document).delegate("img.search-result", "click", function() {
                 var s = $(this).attr("src");
+                console.log(s);
                 jcrop_api.destroy();
+                if (click_continue === 1) {                  
+                    sub_ori_jcrop.destroy();
+                }
                 $("#search-file").attr({"src": s}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: s,
                     boxHeight: 320
                     }, function () {
                     jcrop_api = this;
+                });
+                $("#sub-origin-file").attr({"src": s}).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: s,
+                    boxHeight: 200
+                    }, function () {
+                    sub_ori_jcrop = this;
+                    click_continue = 1;
                 });
             });
             
