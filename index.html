@@ -657,7 +657,7 @@
                     // });
                     $(".input-group-addon.predict-value").dropdown();
                     $('.colorpicker-component').colorpicker().on('changeColor', function(event) {
-                        window.color = parseInt(event.color.toHSL().h * 360);
+                        window.color = [event.color.toHSL().h, event.color.toHSL().s, event.color.toHSL().l];
                     });
                     is_search = 1;
                     $(this).html('Continue');
