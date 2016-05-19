@@ -54,6 +54,18 @@
                             <li value="0"><a href="#" value="0"> Female </a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Style <span class="caret"></span></a>
+                        <ul class="style dropdown-menu">
+                            <li value="1"><a href="#"> Jacket </a></li>
+                            <li value="2"><a href="#"> Vest </a></li>
+                            <li value="3"><a href="#"> Suit </a></li>
+                            <li value="4"><a href="#"> Windbreaker </a></li>
+                            <li value="5"><a href="#"> Shirt </a></li>
+                            <li value="6"><a href="#"> T-Shirt </a></li>
+                            <li value="7"><a href="#"> Down Jacket </a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#">About</a>
                     </li>
@@ -586,6 +598,11 @@
             $(".gender li a").on('click', function() {
                 var g = $(this).parent().val();
                 gender = g;
+            });
+            
+            $(".style li a").on('click', function() {
+                var s = $(this).parent().val();
+                style = s;
             });
 
             $('#upload-files-visual').on('click', function () {
