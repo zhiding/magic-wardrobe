@@ -121,7 +121,7 @@ function submit(type, info_obj, callback) {
 
 function callback_uploadImage(result) {
     // The server is not always on, thus I add this when testing.
-    result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
+    // result = "<RESULTS><RESULT>13</RESULT><RESULT>26</RESULT><RESULT>100</RESULT><RESULT>200</RESULT></RESULTS>"
     var region_res = [];
     $(result).find('RESULT').each(function() {
         region_res.push(parseInt($(this).text()));
@@ -139,9 +139,11 @@ function firstRetrieval() {
 }
 
 function callback_firstRetrieval(result) {
+    /*
     result = "<RESULTS><RESULT>0.7</RESULT><RESULT>0.5</RESULT><RESULT>0.3</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
     <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
     <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>img/1.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
+    */
     var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
@@ -295,7 +297,7 @@ function secondRetrieval() {
 }
 
 function callback_secondRetrieval(result) {
-	result = "<RESULTS><RESULT>img/2.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
+	// result = "<RESULTS><RESULT>img/2.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
     var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
