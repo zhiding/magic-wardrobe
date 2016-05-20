@@ -714,11 +714,10 @@
             $("#pages").delegate("a", "click", function() {
                 toggle_page(parseInt($(this).attr("data-id")));
             })
-			
+
 			$("#pages-2").delegate("a", "click", function() {
 				toggle_page_2(parseInt($(this).attr("data-id")));
 			})
-        }); 
         
         $(function() {
             $('a.page-scroll').bind('click', function(event) {
