@@ -21,6 +21,9 @@ var img_addrs_2 = [];
 var perCount = 16;
 var pageCount = 0;
 
+var image_size = [0,0];
+var image_plane_size = [0,0];
+
 // pack_info, uploadImage, submit are functions to communicate with server.
 
 /*
@@ -81,8 +84,10 @@ function regionDetection(file) {
     var reader = new FileReader();
     reader.onload = function() {
         imageBinary = this.result;
+        var im = new Image();
+        im.src = imageBinary;
+        image_size = [im.width, im.height];
 		uploadImage(imageBinary, function() {
-			// TODO: gender and style
 			var info_obj = {imgurl: imgUrl, gender: gender, style: style};
 			submit(2, info_obj, callback_uploadImage);
 		}, 0);
@@ -134,7 +139,10 @@ function callback_uploadImage(result) {
 // After you modify the region of the query image, you can click on a button, and ...
 function firstRetrieval() {
     var selection = jcrop_api.getSelection();
-	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: [selection.x,selection.y,selection.w,selection.h]};
+    var portion = [image_size[0] / 350, image_size[1] / 350];
+    var new_selection = [selection.x * portion[0],selection.y * portion[1],selection.w * portion[0],selection.h * portion[1]];
+    parseInt_array(new_selection);
+	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: new_selection};
 	submit(0, info_obj, callback_firstRetrieval);
 }
 
@@ -263,6 +271,9 @@ function uploadSubPlane(file) {
 	var reader = new FileReader();
     reader.onload = function() {
         var subPlaneImageBinary = this.result;
+        var im = new Image();
+        im.src = subPlaneImageBinary;
+        image_plane_size = [im.width, im.height];
 		uploadImage(subPlaneImageBinary, false, 1);
     }
     reader.readAsDataURL(file);
@@ -280,10 +291,15 @@ function secondRetrieval() {
     
     if (imgSubPlane != "")
     {
+        var portion = [image_size[0] / 200, image_size[1] / 200];
+        var portion_plane = [image_plane_size[0] / 200, image_plane_size[1] / 200];
+
         var selection_a = sub_ori_jcrop.getSelection();
-        attr_areas[0] = [selection_a.x*1.75,selection_a.y*1.75,selection_a.w*1.75,selection_a.h*1.75];
+        attr_areas[0] = [selection_a.x * portion[0],selection_a.y * portion[1],selection_a.w * portion[0],selection_a.h * portion[1]];
+        parseInt_array(attr_areas[0]);
         selection_a = sub_upload_jcrop.getSelection();
-        attr_areas[1] = [selection_a.x*1.75,selection_a.y*1.75,selection_a.w*1.75,selection_a.h*1.75];
+        attr_areas[1] = [selection_a.x * portion_plane[0],selection_a.y * portion_plane[1],selection_a.w * portion_plane[0],selection_a.h * portion_plane[1]];
+        parseInt_array(attr_areas[1]);
     }
     var k = 0;
     $("#substitute select").each(function() {
@@ -349,4 +365,10 @@ function setImgUrl(s)
     // Do region detection
     var info_obj = {imgurl: imgUrl, gender: gender, style: style};
     submit(2, info_obj, callback_uploadImage);
+}
+
+function parseInt_array(arr) {
+    for (var i in arr) {
+        arr[i] = parseInt(arr[i]);
+    }
 }
