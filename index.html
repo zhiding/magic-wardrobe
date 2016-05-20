@@ -321,23 +321,8 @@
                 </div>
                 <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
                     <div class="flex-images" id="image-show-1" style="display: none;">
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/1.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/2.jpg"></div>
-                        <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/3.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/4.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/5.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/6.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/7.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/8.jpg"></div>
-                        <div class="item" data-w="241" data-h="320"><img class="search-result" src="img/9.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/10.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/11.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/12.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/13.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/14.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/15.jpg"></div>
-                        <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/16.jpg"></div>
-                    </div>
+                        <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
+					</div>
                     <nav id="pages">
                     </nav>
                 </div>
@@ -348,7 +333,7 @@
     <section class="substitute" id="substitute" style="visibility: visible;">
     <div class="container text-center">
         <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-5 col-sm-12">
                 <div class="row">
                         <div class="col-md-5 search-image-wrap">
                             <img id="sub-origin-file" class="img-responsive" src="" alt="">
@@ -539,29 +524,14 @@
                       </div>
                         <div class="row">
                             <input type="file" class="send-form" id="sub-upload-files" name="files[]" data-url="#" style="display: none;" multiple>
-                        <div class="col-md-offset-3 col-md-4 col-xs-12">
-                          <button id="sub-search-btn" class="btn btn-primary btn-filled"> search </button>
-                        </div>
-                      </div>
+							<div class="col-md-offset-3 col-md-4 col-xs-12">
+							<button id="sub-search-btn" class="btn btn-primary btn-filled"> search </button>
+							</div>
+						</div>
                 </div>
-                <div class="flex-images-wrapper col-md-offset-1 col-md-5 col-xs-12">
+                <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
                     <div class="flex-images" id="image-show-2" style="display: none;">
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/1.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/2.jpg"></div>
-                        <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/3.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/4.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/5.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/6.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/7.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/8.jpg"></div>
-                        <div class="item" data-w="241" data-h="320"><img class="search-result" src="img/9.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/10.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/11.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/12.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/13.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/14.jpg"></div>
-                        <div class="item" data-w="320" data-h="320"><img class="search-result" src="img/15.jpg"></div>
-                        <div class="item" data-w="240" data-h="320"><img class="search-result" src="img/16.jpg"></div>
+                        <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
                     </div>
                     <nav id="pages-2">
                     </nav>
@@ -627,7 +597,7 @@
                 $("#search-file").attr({'src': src}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: src,
-                    boxHeight: 320
+                    boxHeight: 350
                     }, function() { 
                     jcrop_api = this;
                     thumbnail = this.initComponent('Thumbnailer', {width: 100, height: 100});
@@ -666,7 +636,7 @@
                 if (is_search === 0) {
                     firstRetrieval();
                     $(".tag-predictions-wrap").css("display", "block");
-                    $(".flex-images").css("display", "block");
+                    $("#image-show-1").css("display", "block");
                     $(".flex-images").flexImages({rowHeight: 140});
                     //$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
                     //    event.preventDefault();
@@ -693,10 +663,10 @@
                     });
                 }
             });
-            $(document).delegate("img.search-result", "mouseenter", function() {
+            $(document).delegate("img.search-result", "mouseenter", function(e) {
                 var s = $(this).attr("src");
-                var tp = $(this).offset().top+40;
-                var lt = $(this).offset().left+40;
+                var tp = $(this).offset().top+140;
+                var lt = $(this).offset().left+140;
                 $("body").append("<img class='imghover' src='"+s+"'/>");
                 $(".imghover").css({"position": "absolute", "top":tp+'px', "left":lt+'px'}).fadeTo("slow", 1);
             });
@@ -714,7 +684,7 @@
                 $("#search-file").attr({"src": s}).Jcrop({
                     setSelect: [0, 0, 0, 0],
                     setImage: s,
-                    boxHeight: 320
+                    boxHeight: 350
                     }, function () {
                     jcrop_api = this;
                 });
@@ -733,6 +703,7 @@
             });
             
             $("#sub-search-btn").on("click", function() {
+				$("#image-show-2").css("display", "block");
                 secondRetrieval();
             });
 
@@ -743,6 +714,10 @@
             $("#pages").delegate("a", "click", function() {
                 toggle_page(parseInt($(this).attr("data-id")));
             })
+			
+			$("#pages-2").delegate("a", "click", function() {
+				toggle_page_2(parseInt($(this).attr("data-id")));
+			})
         }); 
         
         $(function() {

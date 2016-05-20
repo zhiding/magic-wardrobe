@@ -281,9 +281,9 @@ function secondRetrieval() {
     if (imgSubPlane != "")
     {
         var selection_a = sub_ori_jcrop.getSelection();
-        attr_areas[0] = [selection_a.x,selection_a.y,selection_a.w,selection_a.h];
+        attr_areas[0] = [selection_a.x*1.75,selection_a.y*1.75,selection_a.w*1.75,selection_a.h*1.75];
         selection_a = sub_upload_jcrop.getSelection();
-        attr_areas[1] = [selection_a.x,selection_a.y,selection_a.w,selection_a.h];
+        attr_areas[1] = [selection_a.x*1.75,selection_a.y*1.75,selection_a.w*1.75,selection_a.h*1.75];
     }
     var k = 0;
     $("#substitute select").each(function() {
@@ -329,7 +329,7 @@ function toggle_page_2(k) {
     $("#image-show-2").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs_2.length, k * perCount);i++)
     {
-        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][1] + '"><a href="' + img_addrs_2[i][0] + '" data-toggle="lightbox" data-gallery="multiimages"><img class="search-result" src="' + img_addrs_2[i][0] + '"></a></div>';
+        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][1] + '"><img class="search-result" src="' + img_addrs_2[i][0] + '"/></div>';
         $("#image-show-2").append(dom);
     }
     $("#image-show-2").flexImages({rowHeight: 140});
