@@ -3,7 +3,7 @@ var imgUrl = "";
 var imgSubPlane = "";
 var jcrop_api, sub_upload_jcrop, sub_ori_jcrop;
 var alo = 3;
-var nu = 10;
+var nu = 9;
 var attr_areas = new Array();
 attr_areas[0] = [0,0,0,0];
 attr_areas[1] = [0,0,0,0];
@@ -13,8 +13,8 @@ var gender = -1;
 var style = -1;
 var color = 0;
 var color_backup = 0;
-var attrs_backup = new Array(10);
-var attrs = new Array(10);
+var attrs_backup = new Array(nu);
+var attrs = new Array(nu);
 var img_addrs = [];
 var img_addrs_2 = [];
 
@@ -119,9 +119,9 @@ function uploadImage(image_binary, submit_cb, param_type) {
 
 function submit(type, info_obj, callback) {
 	pack_str = pack_info(type, info_obj);
-	console.log("query: ../ir/ProcessServlet?algo=c5042&info=", pack_str);
-	// $.post("../ir/ProcessServlet", {algo: "c5042", info: pack_str}, callback, "xml");
-    $.ajax({type: "POST", url: "../ir/ProcessServlet", data: {algo: "c5042", info: pack_str}, contentType: "application/x-www-form-urlencoded;charset=utf-8", dataType: "xml", success: callback});
+	console.log("query: ../ir/ProcessServlet?algo=c5043&info=", pack_str);
+	// $.post("../ir/ProcessServlet", {algo: "c5043", info: pack_str}, callback, "xml");
+    $.ajax({type: "POST", url: "../ir/ProcessServlet", data: {algo: "c5043", info: pack_str}, contentType: "application/x-www-form-urlencoded;charset=utf-8", dataType: "xml", success: callback});
 }
 
 function callback_uploadImage(result) {
@@ -147,12 +147,12 @@ function firstRetrieval() {
 }
 
 function callback_firstRetrieval(result) {
-    /*
-    result = "<RESULTS><RESULT>0.7</RESULT><RESULT>0.5</RESULT><RESULT>0.3</RESULT><RESULT>10</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
+	/*
+    result = "<RESULTS><RESULT>0.7</RESULT><RESULT>0.5</RESULT><RESULT>0.3</RESULT><RESULT>9</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
     <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT> \
-    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>2</RESULT><RESULT>img/1.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
+    <RESULT>3</RESULT><RESULT>4</RESULT><RESULT>1</RESULT><RESULT>img/1.jpg</RESULT><RESULT>200</RESULT><RESULT>100</RESULT></RESULTS>";
     */
-    var tmp = [];
+	var tmp = [];
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
     });
