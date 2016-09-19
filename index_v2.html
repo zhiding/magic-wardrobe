@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        
-        <META http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        
-        
-        <title> Magic Wardrobe - SJTU 2016 </title>
-        
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="css/site.css" rel="stylesheet"/>
-        <link href="css/Jcrop.min.css" rel="stylesheet"/>
-        <link href="css/jquery.flex-images.css" rel="stylesheet"/>
-        <link href="css/ekko-lightbox.min.css" rel="stylesheet"/>
-        <link href="css/bootstrap-colorpicker.min.css" rel="stylesheet"/>
-        
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+
+<head>
+
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title> Magic Wardrobe - SJTU 2016 </title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="css/Jcrop.min.css" rel="stylesheet">
+    <link href="css/jquery.flex-images.css" rel="stylesheet">
+    <link href="css/ekko-lightbox.min.css" rel="stylesheet">
+    <link href="css/bootstrap-colorpicker.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
          <![endif]-->
-        
-    </head>
-    
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Magic Wardrobe</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#">Guide</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Gender <span class="caret"></span></a>
-                            <ul class="gender dropdown-menu">
-                                <li value="1"><a href="#"> Male </a></li>
-                                <li value="0"><a href="#" value="0"> Female </a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Style <span class="caret"></span></a>
-                            <ul class="style dropdown-menu">
-                                <li value="1"><a href="#"> Jacket </a></li>
-                                <li value="2"><a href="#"> Vest </a></li>
-                                <li value="3"><a href="#"> Suit </a></li>
-                                <li value="4"><a href="#"> Windbreaker </a></li>
-                                <li value="5"><a href="#"> Shirt </a></li>
-                                <li value="6"><a href="#"> T-Shirt </a></li>
-                                <li value="7"><a href="#"> Eidendown </a></li>
-                                <li value="8"><a href="#"> Coat </a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Language</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+                <a class="navbar-brand" href="#">Magic Wardrobe</a>
             </div>
-            <!-- /.container -->
-        </nav>
-        
-        <!-- Page Content -->
-        <ul class="col-md-offset-1 col-md-10 breadcrumb" role="tablist">
-            <li class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
-            <li><a href="#search-tab" aria-controls="search-tab" role="tab" data-toggle="tab">Search</a></li>
-            <li><a href="#substitude" aria-controls="substitude" role="tab" data-toggle="tab">Substitude</a></li>
-        </ul>
-        <div class="container text-center">
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" style="margin: 180px 0" id="upload">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Guide</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Gender <span class="caret"></span></a>
+                        <ul class="gender dropdown-menu">
+                            <li value="1"><a href="#"> Male </a></li>
+                            <li value="0"><a href="#" value="0"> Female </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Style <span class="caret"></span></a>
+                        <ul class="style dropdown-menu">
+                            <li value="1"><a href="#"> Jacket </a></li>
+                            <li value="2"><a href="#"> Vest </a></li>
+                            <li value="3"><a href="#"> Suit </a></li>
+                            <li value="4"><a href="#"> Windbreaker </a></li>
+                            <li value="5"><a href="#"> Shirt </a></li>
+                            <li value="6"><a href="#"> T-Shirt </a></li>
+                            <li value="7"><a href="#"> Eidendown </a></li>
+                            <li value="8"><a href="#"> Coat </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Language</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <ul class="col-md-offset-1 col-md-10 breadcrumb" role="tablist">
+        <li class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
+        <li><a href="#search-tab" aria-controls="search-tab" role="tab" data-toggle="tab">Search</a></li>
+        <li><a href="#substitude" aria-controls="substitude" role="tab" data-toggle="tab">Substitude</a></li>
+    </ul>
+    <div class="container text-center">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" style="margin: 180px 0" id="upload">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="center-block">Try it out with your own image</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <p class="lead"> Upload an image file under 2mb or give us a direct link to a file on the web.</p>
+                    </div>
+                </div>
+                <form id="fileupload" class="form-demo" action="#" method="POST" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="center-block">Try it out with your own image</h1>
+                        <div class="col-md-offset-3 col-md-6">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <input id="imageurl" class="form-url input-wide" type="text" placeholder="Paste a url here..." autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <input id="fileupload-imgurl-btn" type="submit" class="go btn btn-primary input-wide" value="Use the Url">
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="btn btn-primary btn-filled input-wide" type="button" id="upload-files-visual" value="Choose a File Instead">
+                                    <input type="file" class="send-form" id="upload-files" name="files[]" data-url="#" multiple>
+                                    <a id="go-search" href="#search" class="btn btn-circle page-scroll">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <p class="lead"> Upload an image file under 2mb or give us a direct link to a file on the web.</p>
+                </form>
+                <div class="row">
+                    <div class="col-xs-11 col-xs-11-offset-1">
+                        <div id="fileupload-progress" class="fileupload-progress fade">
+                            <div class="progress progress-stripped">
+                                <div class="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%;"></div>
+                            </div>
                         </div>
                     </div>
-                    <form id="fileupload" class="form-demo" action="#" method="POST" enctype="multipart/form-data">
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="search-tab">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-12">
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <input id="imageurl" class="form-url input-wide" type="text" placeholder="Paste a url here..." autocomplete="off">
-                                            </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <input id="fileupload-imgurl-btn" type="submit" class="go btn btn-primary input-wide" value="Use the Url">
-                                            </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input class="btn btn-primary btn-filled input-wide" type="button" id="upload-files-visual" value="Choose a File Instead">
-                                            <input type="file" class="send-form" id="upload-files" name="files[]" data-url="#" multiple>
-                                                <a id="go-search" href="#search" class="btn btn-circle page-scroll">
-                                                </a>
-                                                </div>
-                                </div>
+                            <div class="search-image-wrap">
+                                <img id="search-file" class="img-responsive" src="img/upload.png" alt="">
                             </div>
                         </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-xs-11 col-xs-11-offset-1">
-                            <div id="fileupload-progress" class="fileupload-progress fade">
-                                <div class="progress progress-stripped">
-                                    <div class="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%;"></div>
+                        <div class="row">
+                            <div class="tag-prediction-wrap">
+                                <div class="row title">
+                                    <h3 class="text-center"> Predicted Tags </h3>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="search-tab">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                            <div class="row">
-                                <div class="search-image-wrap">
-                                    <img id="search-file" class="img-responsive" src="img/upload.png" alt="">
-                                        </div>
-                            </div>
-                            <div class="row">
-                                <div class="tag-prediction-wrap">
-                                    <div class="row title">
-                                        <h3 class="text-center"> Predicted Tags </h3>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Shape</span>
+                                        <span class="select predict-value input-group-addon">
+                                            <select class="form-control">
+                                                <option value="1">Slim</option>
+                                                <option value="2">Standard</option>
+                                                <option value="3">Loose</option>
+                                                <option value="4">Others</option>
+                                                <option value="5">Cloak</option>
+                                                <option value="6">Shawl</option>
+                                            </select>
+                                        </span>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Shape</span>
-                                            <span class="select predict-value input-group-addon">
-                                                <select class="form-control">
-                                                    <option value="1">Slim</option>
-                                                    <option value="2">Standard</option>
-                                                    <option value="3">Loose</option>
-                                                    <option value="4">Others</option>
-                                                    <option value="5">Cloak</option>
-                                                    <option value="6">Shawl</option>
-                                                </select>
-                                            </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Pattern</span>
-                                            <span class="select predict-value input-group-addon">
-                                                <select class="form-control">
-                                                    <option value="1">Plaid</option>
-                                                    <option value="2">Solid</option>
-                                                    <option value="3">Dot</option>
-                                                    <option value="4">Stripe</option>
-                                                    <option value="5">Flower</option>
-                                                    <option value="6">Others</option>
-                                                    <option value="7">Animal</option>
-                                                </select>
-                                            </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Material</span>
-                                            <span class="select predict-value input-group-addon">
-                                                <select class="form-control">
-                                                    <option value="1">Silk</option>
-                                                    <option value="2">Linen</option>
-                                                    <option value="3">Cotton</option>
-                                                    <option value="4">Down</option>
-                                                    <option value="5">Woolen</option>
-                                                    <option value="6">Others</option>
-                                                </select>
-                                            </span>
-                                        </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Pattern</span>
+                                        <span class="select predict-value input-group-addon">
+                                            <select class="form-control">
+                                                <option value="1">Plaid</option>
+                                                <option value="2">Solid</option>
+                                                <option value="3">Dot</option>
+                                                <option value="4">Stripe</option>
+                                                <option value="5">Flower</option>
+                                                <option value="6">Others</option>
+                                                <option value="7">Animal</option>
+                                            </select>
+                                        </span>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Collar</span>
-                                            <span class="select predict-value input-group-addon">
-                                                <select class="form-control">
-                                                    <option value="1">Notched</option>
-                                                    <option value="2">V-neck</option>
-                                                    <option value="3">Shirt</option>
-                                                    <option value="4">High</option>
-                                                    <option value="5">Round</option>
-                                                    <option value="6">Others</option>
-                                                    <option value="7">Hooded</option>
-                                                </select>
-                                            </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Sleeve</span>
-                                            <span class="select predict-value input-group-addon">
-                                                <select class="form-control">
-                                                    <option value="1">Short</option>
-                                                    <option value="2">Long</option>
-                                                    <option value="3">Sleeveless</option>
-                                                    <option value="4">Middle-length</option>
-                                                    <option value="5">Others</option>
-                                                </select>
-                                            </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Placket</span>
-                                            <span class="select predict-value input-group-addon">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Material</span>
+                                        <span class="select predict-value input-group-addon">
+                                            <select class="form-control">
+                                                <option value="1">Silk</option>
+                                                <option value="2">Linen</option>
+                                                <option value="3">Cotton</option>
+                                                <option value="4">Down</option>
+                                                <option value="5">Woolen</option>
+                                                <option value="6">Others</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Collar</span>
+                                        <span class="select predict-value input-group-addon">
+                                            <select class="form-control">
+                                                <option value="1">Notched</option>
+                                                <option value="2">V-neck</option>
+                                                <option value="3">Shirt</option>
+                                                <option value="4">High</option>
+                                                <option value="5">Round</option>
+                                                <option value="6">Others</option>
+                                                <option value="7">Hooded</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Sleeve</span>
+                                        <span class="select predict-value input-group-addon">
+                                            <select class="form-control">
+                                                <option value="1">Short</option>
+                                                <option value="2">Long</option>
+                                                <option value="3">Sleeveless</option>
+                                                <option value="4">Middle-length</option>
+                                                <option value="5">Others</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Placket</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Others</option>
                                                     <option value="2">Zip</option>
@@ -222,12 +222,12 @@
                                                     <option value="4">single-breasted</option>
                                                 </select>
                                             </span>
-                                        </div>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Style</span>
-                                            <span class="select predict-value input-group-addon">
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Style</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Japanese or South Korean</option>
                                                     <option value="2">Business</option>
@@ -240,19 +240,19 @@
                                                     <option value="9">Military</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Age</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Age</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Teenager or Youth</option>
                                                     <option value="2">Middle-aged or Elderly</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Category</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Category</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Jacket</option>
                                                     <option value="2">Vest</option>
@@ -264,43 +264,43 @@
                                                     <option value="8">Coat</option>
                                                 </select>
                                             </span>
-                                        </div>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group input-group colorpicker-component">
-                                            <input type="text" value="#00AABB" class="form-control" />
-                                            <span class="color input-group-addon"><i></i></span>
-                                        </div>
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group input-group colorpicker-component">
+                                        <input type="text" value="#00AABB" class="form-control" />
+                                        <span class="color input-group-addon"><i></i></span>
                                     </div>
-                                    <div id="region-upload-wrap" class="col-md-offset-4 col-md-4 col-xs-12">
-                                        <button id="region-upload-btn" class="btn btn-primary btn-filled"> search </button>
-                                        <a id="go-substitute" href="#substitute" class="btn btn-circle page-scroll"></a>
-                                    </div>
+                                </div>
+                                <div id="region-upload-wrap" class="col-md-offset-4 col-md-4 col-xs-12">
+                                    <button id="region-upload-btn" class="btn btn-primary btn-filled"> search </button>
+                                    <a id="go-substitute" href="#substitute" class="btn btn-circle page-scroll"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="substitude">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-12">
-                            <div class="row">
-                                <div class="col-md-5 search-image-wrap">
-                                    <img id="sub-origin-file" class="img-responsive" src="" alt="">
-                                        </div>
-                                <div class="col-md-5 search-image-wrap">
-                                    <img id="sub-upload-file" class="img-responsive" src="img/upload.png" style="margin-top: 50px; max-width: 100px; max-height: 100px"></img>
-                                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="substitude">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-5 search-image-wrap">
+                                <img id="sub-origin-file" class="img-responsive" src="" alt="">
                             </div>
-                            <div class="row">
-                                <div class="tag-predictions-wrap">
-                                    <div class="row title">
-                                        <h3 class="text-center"> Predicted Tags </h3>
-                                    </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Shape</span>
-                                            <span class="select predict-value input-group-addon">
+                            <div class="col-md-5 search-image-wrap">
+                                <img id="sub-upload-file" class="img-responsive" src="img/upload.png" style="margin-top: 50px; max-width: 100px; max-height: 100px"></img>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="tag-predictions-wrap">
+                                <div class="row title">
+                                    <h3 class="text-center"> Predicted Tags </h3>
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Shape</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Slim</option>
                                                     <option value="2">Standard</option>
@@ -310,10 +310,10 @@
                                                     <option value="6">Shawl</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Pattern</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Pattern</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Plaid</option>
                                                     <option value="2">Solid</option>
@@ -324,10 +324,10 @@
                                                     <option value="7">Animal</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Material</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Material</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Silk</option>
                                                     <option value="2">Linen</option>
@@ -337,12 +337,12 @@
                                                     <option value="6">Others</option>
                                                 </select>
                                             </span>
-                                        </div>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Collar</span>
-                                            <span class="select predict-value input-group-addon">
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Collar</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Notched</option>
                                                     <option value="2">V-neck</option>
@@ -353,10 +353,10 @@
                                                     <option value="7">Hooded</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Sleeve</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Sleeve</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Short</option>
                                                     <option value="2">Long</option>
@@ -365,10 +365,10 @@
                                                     <option value="5">Others</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Placket</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Placket</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Others</option>
                                                     <option value="2">Zip</option>
@@ -376,12 +376,12 @@
                                                     <option value="4">single-breasted</option>
                                                 </select>
                                             </span>
-                                        </div>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Style</span>
-                                            <span class="select predict-value input-group-addon">
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Style</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Japanese or South Korean</option>
                                                     <option value="2">Business</option>
@@ -394,19 +394,19 @@
                                                     <option value="9">Military</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Age</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Age</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Teenager or Youth</option>
                                                     <option value="2">Middle-aged or Elderly</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <div class="predict-group">
-                                            <span class="predict-attr input-group-addon">Category</span>
-                                            <span class="select predict-value input-group-addon">
+                                    </div>
+                                    <div class="predict-group">
+                                        <span class="predict-attr input-group-addon">Category</span>
+                                        <span class="select predict-value input-group-addon">
                                                 <select class="form-control">
                                                     <option value="1">Jacket</option>
                                                     <option value="2">Vest</option>
@@ -418,226 +418,246 @@
                                                     <option value="8">Coat</option>
                                                 </select>
                                             </span>
-                                        </div>
                                     </div>
-                                    <div class="row tag-predictions">
-                                        <div class="predict-group input-group colorpicker-component">
-                                            <span class="color input-group-addon"><i></i></span>
-                                            <input type="text" value="#00AABB" class="form-control" />
-                                        </div>
+                                </div>
+                                <div class="row tag-predictions">
+                                    <div class="predict-group input-group colorpicker-component">
+                                        <span class="color input-group-addon"><i></i></span>
+                                        <input type="text" value="#00AABB" class="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <input type="file" class="send-form" id="sub-upload-files" name="files[]" data-url="#" style="display: none;" multiple>
-                                    <div class="col-md-offset-3 col-md-4 col-xs-12">
-                                        <button id="sub-search-btn" class="btn btn-primary btn-filled"> search </button>
-                                    </div>
-                                    </div>
                         </div>
-                        <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
-                            <div class="flex-images" id="image-show-2" style="display: none;">
-                                <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
+                        <div class="row">
+                            <input type="file" class="send-form" id="sub-upload-files" name="files[]" data-url="#" style="display: none;" multiple>
+                            <div class="col-md-offset-3 col-md-4 col-xs-12">
+                                <button id="sub-search-btn" class="btn btn-primary btn-filled"> search </button>
                             </div>
-                            <nav id="pages-2">
-                            </nav>
                         </div>
+                    </div>
+                    <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
+                        <div class="flex-images" id="image-show-2" style="display: none;">
+                            <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
+                        </div>
+                        <nav id="pages-2">
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <footer id="footer" class="text-center">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; SJTU BCMI 2016</p>
-                </div>
+    </div>
+    </div>
+    <footer id="footer" class="text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; SJTU BCMI 2016</p>
             </div>
-        </footer>
-        <!-- jQuery -->
-        <script src="js/jquery-2.2.3.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.min.js"></script>
-        <script src="js/Jcrop.min.js"></script>
-        <script src="js/jquery.flex-images.min.js"></script>
-        <script src="js/ekko-lightbox.min.js"></script>
-        <script src="js/bootstrap-colorpicker.min.js"></script>
-        <script src="js/main.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function (e) {
-                              var upload_again = 0;
-                              var is_search = 0;
-                              var is_second_search = 0;
-                              var click_continue = 0;
-                              var upload_src;
-                              // $("section").css({"height": $(window).height()});
-                              $(".gender li a").on('click', function() {
-                                                   var g = $(this).parent().val();
-                                                   gender = g;
-                                                   });
-                              
-                              $(".style li a").on('click', function() {
-                                                  var s = $(this).parent().val();
-                                                  style = s;
-                                                  });
-                              
-                              $('#upload-files-visual').on('click', function () {
-                                                           $("#search").css("visibility", "visible");
-                                                           if (is_second_search == 1) {
-                                                           sub_upload_jcrop.destroy();
-                                                           $("#sub-upload-file").attr({"src":"img/upload.png"});
-                                                           }
-                                                           $('#upload-files').click();
-                                                           });
-                              
-                              $('#upload-files').on('change', function () {
-                                                    $("#go-search").click();
-                                                    var f = this.files[0];
-                                                    if (!f) return;
-                                                    var src = window.URL.createObjectURL(f);
-                                                    upload_src = src;
-                                                    if (upload_again === 1) {
-                                                    jcrop_api.destroy();
-                                                    }
-                                                    regionDetection(f, true);
-                                                    $("#search-file").attr({'src': src}).Jcrop({
-                                                                                               setSelect: [0, 0, 0, 0],
-                                                                                               setImage: src,
-                                                                                               boxHeight: 350
-                                                                                               }, function() {
-                                                                                               jcrop_api = this;
-                                                                                               thumbnail = this.initComponent('Thumbnailer', {width: 100, height: 100});
-                                                                                               jcrop_api.container.on('cropmove', function(e, s, c) {
-                                                                                                                      if (c.h > c.w)
-                                                                                                                      thumbnail.resize(100 * c.w / c.h, 100);
-                                                                                                                      else
-                                                                                                                      thumbnail.resize(100, 100 * c.h / c.w);
-                                                                                                                      
-                                                                                                                      });
-                                                                                               });
-                                                    upload_again = 1;
-                                                    is_search = 0;
-                                                    $("#region-upload-btn").html("Search");
-                                                    $("#region-upload-btn").css("display", "block");
-                                                    $(".tag-predictions-wrap").css("display", "none");
-                                                    $(".flex-images").css("display", "none");
-                                                    });
-                              
-                              $("#sub-upload-files").on("change", function() {
-                                                        var f = this.files[0];
-                                                        if (!f) return;
-                                                        var src = window.URL.createObjectURL(f);
-                                                        uploadSubPlane(f);
-                                                        $("#sub-upload-file").attr({"src": src}).Jcrop({
-                                                                                                       setSelect: [0, 0, 0, 0],
-                                                                                                       setImage: src,
-                                                                                                       boxHeight: 200
-                                                                                                       }, function() {
-                                                                                                       sub_upload_jcrop = this;
-                                                                                                       });
-                                                        is_second_search = 1;
-                                                        });
-                              
-                              $("#region-upload-btn").on('click', function() {
-                                                         if (is_search === 0) {
-                                                         firstRetrieval();
-                                                         $(".tag-predictions-wrap").css("display", "block");
-                                                         $("#image-show-1").css("display", "block");
-                                                         $(".flex-images").flexImages({rowHeight: 140});
-                                                         //$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                                                         //    event.preventDefault();
-                                                         //    $(this).ekkoLightbox();
-                                                         // });
-                                                         $(".input-group-addon.predict-value").dropdown();
-                                                         $('.colorpicker-component').colorpicker().on('changeColor', function(event) {
-                                                                                                      window.color = [event.color.toHSL().h, event.color.toHSL().s, event.color.toHSL().l];
-                                                                                                      });
-                                                         is_search = 1;
-                                                         $(this).html('Continue');
-                                                         }
-                                                         else {
-                                                         is_search = 0;
-                                                         click_continue = 1;
-                                                         $(this).html('Search');
-                                                         $("#go-substitute").click();
-                                                         $("#sub-origin-file").attr({"src": upload_src}).Jcrop({
-                                                                                                               setSelect: [0, 0, 0, 0],
-                                                                                                               setImage: upload_src,
-                                                                                                               boxHeight: 200
-                                                                                                               }, function () {
-                                                                                                               sub_ori_jcrop = this;
-                                                                                                               });
-                                                         }
-                                                         });
-                              $(document).delegate("img.search-result", "mouseenter", function(e) {
-                                                   var s = $(this).attr("src");
-                                                   var tp = $(this).offset().top+140;
-                                                   var lt = $(this).offset().left+140;
-                                                   $("body").append("<img class='imghover' src='"+s+"'/>");
-                                                   $(".imghover").css({"position": "absolute", "top":tp+'px', "left":lt+'px'}).fadeTo("slow", 1);
-                                                   });
-                              $(document).delegate("img.search-result", "mouseleave", function() {
-                                                   $(".imghover").remove();
-                                                   });
-                              
-                              $(document).delegate("img.search-result", "click", function() {
-                                                   var s = $(this).attr("src");
-                                                   console.log(s);
-                                                   jcrop_api.destroy();
-                                                   if (click_continue === 1) {
-                                                   sub_ori_jcrop.destroy();
-                                                   }
-                                                   $("#search-file").attr({"src": s}).Jcrop({
-                                                                                            setSelect: [0, 0, 0, 0],
-                                                                                            setImage: s,
-                                                                                            boxHeight: 350
-                                                                                            }, function () {
-                                                                                            jcrop_api = this;
-                                                                                            });
-                                                   $("#sub-origin-file").attr({"src": s}).Jcrop({
-                                                                                                setSelect: [0, 0, 0, 0],
-                                                                                                setImage: s,
-                                                                                                boxHeight: 200
-                                                                                                }, function () {
-                                                                                                sub_ori_jcrop = this;
-                                                                                                click_continue = 1;
-                                                                                                });
-                                                   setImgUrl(s);
-                                                   image_size = [$(this).parent().attr("data-w"), $(this).parent().attr("data-h")];
-                                                   is_search = 0;
-                                                   click_continue = 1;
-                                                   $("#region-upload-btn").html('Search');
-                                                   });
-                              
-                              $("#sub-search-btn").on("click", function() {
-                                                      $("#image-show-2").css("display", "block");
-                                                      secondRetrieval();
-                                                      });
-                              
-                              $("#sub-upload-file").bind("click", function() {
-                                                         $("#sub-upload-files").click();
-                                                         });
-                              
-                              $("#pages").delegate("a", "click", function() {
-                                                   toggle_page(parseInt($(this).attr("data-id")));
-                                                   });
-                              
-                              $("#pages-2").delegate("a", "click", function() {
-                                                     toggle_page_2(parseInt($(this).attr("data-id")));
-                                                     });
-                              });
-                              
-                              $(function() {
-                                $('a.page-scroll').bind('click', function(event) {
-                                                        var $anchor = $(this);
-                                                        $('html, body').stop().animate({
-                                                                                       scrollTop: $($anchor.attr('href')).offset().top
-                                                                                       }, 1500, 'easeInOutExpo');
-                                                        event.preventDefault();
-                                                        });
-                                });
-            </script>
-        
-    </body>
-    
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/Jcrop.min.js"></script>
+    <script src="js/jquery.flex-images.min.js"></script>
+    <script src="js/ekko-lightbox.min.js"></script>
+    <script src="js/bootstrap-colorpicker.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            var upload_again = 0;
+            var is_search = 0;
+            var is_second_search = 0;
+            var click_continue = 0;
+            var upload_src;
+            // $("section").css({"height": $(window).height()});
+            $(".gender li a").on('click', function() {
+                var g = $(this).parent().val();
+                gender = g;
+            });
+
+            $(".style li a").on('click', function() {
+                var s = $(this).parent().val();
+                style = s;
+            });
+
+            $('#upload-files-visual').on('click', function() {
+                $("#search").css("visibility", "visible");
+                if (is_second_search == 1) {
+                    sub_upload_jcrop.destroy();
+                    $("#sub-upload-file").attr({
+                        "src": "img/upload.png"
+                    });
+                }
+                $('#upload-files').click();
+            });
+
+            $('#upload-files').on('change', function() {
+                $("#go-search").click();
+                var f = this.files[0];
+                if (!f) return;
+                var src = window.URL.createObjectURL(f);
+                upload_src = src;
+                if (upload_again === 1) {
+                    jcrop_api.destroy();
+                }
+                regionDetection(f, true);
+                $("#search-file").attr({
+                    'src': src
+                }).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: src,
+                    boxHeight: 350
+                }, function() {
+                    jcrop_api = this;
+                    thumbnail = this.initComponent('Thumbnailer', {
+                        width: 100,
+                        height: 100
+                    });
+                    jcrop_api.container.on('cropmove', function(e, s, c) {
+                        if (c.h > c.w)
+                            thumbnail.resize(100 * c.w / c.h, 100);
+                        else
+                            thumbnail.resize(100, 100 * c.h / c.w);
+
+                    });
+                });
+                upload_again = 1;
+                is_search = 0;
+                $("#region-upload-btn").html("Search");
+                $("#region-upload-btn").css("display", "block");
+                $(".tag-predictions-wrap").css("display", "none");
+                $(".flex-images").css("display", "none");
+            });
+
+            $("#sub-upload-files").on("change", function() {
+                var f = this.files[0];
+                if (!f) return;
+                var src = window.URL.createObjectURL(f);
+                uploadSubPlane(f);
+                $("#sub-upload-file").attr({
+                    "src": src
+                }).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: src,
+                    boxHeight: 200
+                }, function() {
+                    sub_upload_jcrop = this;
+                });
+                is_second_search = 1;
+            });
+
+            $("#region-upload-btn").on('click', function() {
+                if (is_search === 0) {
+                    firstRetrieval();
+                    $(".tag-predictions-wrap").css("display", "block");
+                    $("#image-show-1").css("display", "block");
+                    $(".flex-images").flexImages({
+                        rowHeight: 140
+                    });
+                    //$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                    //    event.preventDefault();
+                    //    $(this).ekkoLightbox();
+                    // });
+                    $(".input-group-addon.predict-value").dropdown();
+                    $('.colorpicker-component').colorpicker().on('changeColor', function(event) {
+                        window.color = [event.color.toHSL().h, event.color.toHSL().s, event.color.toHSL().l];
+                    });
+                    is_search = 1;
+                    $(this).html('Continue');
+                } else {
+                    is_search = 0;
+                    click_continue = 1;
+                    $(this).html('Search');
+                    $("#go-substitute").click();
+                    $("#sub-origin-file").attr({
+                        "src": upload_src
+                    }).Jcrop({
+                        setSelect: [0, 0, 0, 0],
+                        setImage: upload_src,
+                        boxHeight: 200
+                    }, function() {
+                        sub_ori_jcrop = this;
+                    });
+                }
+            });
+            $(document).delegate("img.search-result", "mouseenter", function(e) {
+                var s = $(this).attr("src");
+                var tp = $(this).offset().top + 140;
+                var lt = $(this).offset().left + 140;
+                $("body").append("<img class='imghover' src='" + s + "'/>");
+                $(".imghover").css({
+                    "position": "absolute",
+                    "top": tp + 'px',
+                    "left": lt + 'px'
+                }).fadeTo("slow", 1);
+            });
+            $(document).delegate("img.search-result", "mouseleave", function() {
+                $(".imghover").remove();
+            });
+
+            $(document).delegate("img.search-result", "click", function() {
+                var s = $(this).attr("src");
+                console.log(s);
+                jcrop_api.destroy();
+                if (click_continue === 1) {
+                    sub_ori_jcrop.destroy();
+                }
+                $("#search-file").attr({
+                    "src": s
+                }).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: s,
+                    boxHeight: 350
+                }, function() {
+                    jcrop_api = this;
+                });
+                $("#sub-origin-file").attr({
+                    "src": s
+                }).Jcrop({
+                    setSelect: [0, 0, 0, 0],
+                    setImage: s,
+                    boxHeight: 200
+                }, function() {
+                    sub_ori_jcrop = this;
+                    click_continue = 1;
+                });
+                setImgUrl(s);
+                image_size = [$(this).parent().attr("data-w"), $(this).parent().attr("data-h")];
+                is_search = 0;
+                click_continue = 1;
+                $("#region-upload-btn").html('Search');
+            });
+
+            $("#sub-search-btn").on("click", function() {
+                $("#image-show-2").css("display", "block");
+                secondRetrieval();
+            });
+
+            $("#sub-upload-file").bind("click", function() {
+                $("#sub-upload-files").click();
+            });
+
+            $("#pages").delegate("a", "click", function() {
+                toggle_page(parseInt($(this).attr("data-id")));
+            });
+
+            $("#pages-2").delegate("a", "click", function() {
+                toggle_page_2(parseInt($(this).attr("data-id")));
+            });
+        });
+
+        $(function() {
+            $('a.page-scroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        });
+    </script>
+
+</body>
+
 </html>
