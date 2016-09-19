@@ -278,6 +278,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="flex-images-wrapper col-md-offset-1 col-md-6 col-xs-12">
+                            <div class="flex-images" id="image-show-1" style="display: none;">
+                                <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
+                            </div>
+                            <nav id="pages">
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -644,16 +651,6 @@
 
             $("#pages-2").delegate("a", "click", function() {
                 toggle_page_2(parseInt($(this).attr("data-id")));
-            });
-        });
-
-        $(function() {
-            $('a.page-scroll').bind('click', function(event) {
-                var $anchor = $(this);
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top
-                }, 1500, 'easeInOutExpo');
-                event.preventDefault();
             });
         });
     </script>
