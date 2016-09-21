@@ -478,6 +478,12 @@
             var click_continue = 0;
             var upload_src;
             // $("section").css({"height": $(window).height()});
+			$(document).on("keypress", function(event) { 
+				if (event.key == 'z') window.gender = 1;
+				else if (event.key == 'x') window.gender = 0;
+				else return;
+				console.log("KeyPress: " + event.key + "\nGender: " + window.gender);
+			});
             $(".gender li a").on('click', function() {
                 var g = $(this).parent().val();
                 gender = g;
