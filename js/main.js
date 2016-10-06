@@ -5,6 +5,7 @@ var jcrop_api, sub_upload_jcrop, sub_ori_jcrop;
 var alo = 3;
 var nu = 9;
 var attr_areas = new Array();
+var selection = [0,0,0,0];
 attr_areas[0] = [0,0,0,0];
 attr_areas[1] = [0,0,0,0];
 
@@ -39,6 +40,8 @@ info_obj{type == 1}:
 "img_replace_area": [x1,y1,w,h], "sub_replace_area": [x1,y1,w,h]}
 info_obj{type == 2}:
 {"gender": <0/1/-1>, "style": <1~7/-1>, "imgurl": <server side url>}
+info_obj{type == 3}:
+{"url": <alternative imgurl to upload>}
 */
 function pack_info(type, info_obj)
 {
@@ -64,6 +67,9 @@ function pack_info(type, info_obj)
             info_str = type + ";" + info_obj.gender + ";" + 
                 info_obj.style + ";" + info_obj.imgurl + ";";
             break;
+		case 3:
+			info_str = type + ";" + info_obj.url + ";";
+			break;
         case 0:
             var area_str = info_obj.area_arr.join(",");
             info_str = type + ";" + info_obj.gender + ";" + 
@@ -142,6 +148,7 @@ function firstRetrieval() {
     var portion = [image_size[0] / 350, image_size[1] / 350];
     var new_selection = [selection.x * portion[0],selection.y * portion[1],selection.w * portion[0],selection.h * portion[1]];
     parseInt_array(new_selection);
+	window.selection = new_selection;
 	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: new_selection};
 	submit(0, info_obj, callback_firstRetrieval);
 }
@@ -203,7 +210,7 @@ function toggle_page(k) {
 function firstRetrieval_setAttrs() {
     var k = 0;
     console.log(attrs);
-    $("#search select").each(function() {
+    $("#search-tab select").each(function() {
         $(this).prop("disabled", true);
         $(this).val(attrs[k]);
         k++;
@@ -286,8 +293,7 @@ function uploadSubPlane(file) {
 "img_replace_area": [x1,y1,w,h], "sub_replace_area": [x1,y1,w,h]}
 */
 function secondRetrieval() {
-    var selection = jcrop_api.getSelection();
-    var selection_arr = [selection.x,selection.y,selection.w,selection.h];
+    var selection_arr = window.selection;
     
     if (imgSubPlane != "")
     {
@@ -304,6 +310,7 @@ function secondRetrieval() {
     var k = 0;
     $("#substitute select").each(function() {
         if ($(this).val() != attrs_backup[k]) attrs[k] = -$(this).val();
+		else attrs[k] = $(this).val();
         k++;
     });
 	var info_obj = {imgurl: imgUrl, gender: gender, style: style, area_arr: selection_arr, attr: attrs,
@@ -325,6 +332,14 @@ function callback_secondRetrieval(result) {
     }
     page_init_2();
     toggle_page_2(1);
+	
+	// Destroy the image crop anyway.
+	if ($("#sub-upload-file").attr("src") != "img/upload.png") {
+		sub_upload_jcrop.destroy();
+		$("#sub-upload-file").attr({
+			"src": "img/upload.png"
+		});
+	}
 }
 
 function page_init_2() {
@@ -354,6 +369,66 @@ function toggle_page_2(k) {
     $("#pages-2 a:last").attr("data-id", (k + 1 > pageCount) ? -1 : k + 1);
     $("#pages-2 a[data-id=" + k + "]").parent().addClass("active");
 }
+
+/*
+function uploadByUrl(url) {
+	var callback_uploadByUrl = function(result) {
+		var res = [];
+		$(result).find('RESULT').each(function() {
+			res.push($(this).text());
+		});
+		if (res.length < 1) { alert("Failed to recognize the image url"); return; }
+		imgUrl = res[0];
+		// responsive
+		var s = imgUrl;
+		s = s.replace(/E:\\project\\Test_iRP_tag\\uploadImg\\/, "/challenge_upload/");
+		console.log(s);
+
+		jcrop_api.destroy();
+		if (click_continue === 1) {                  
+			sub_ori_jcrop.destroy();
+		}
+		var size_checker = new Image();
+		size_checker.src = s;
+		size_checker.on("load", function() {
+			image_size = [$(this).width(), $(this).height()];
+		});
+		
+		$("#go-search").click();
+		var src = window.URL.createObjectURL(f);
+		$("#region-upload-btn").html("Search");
+		$("#region-upload-btn").css("display", "block");
+		$(".tag-predictions-wrap").css("display", "none");
+		$(".flex-images").css("display", "none");
+		$("#search-a").parent().show();
+		$("#search-a").click();
+
+		$("#search-file").attr({"src": s}).Jcrop({
+			setSelect: [0, 0, 0, 0],
+			setImage: s,
+			boxHeight: 350
+			}, function () {
+			jcrop_api = this;
+		});
+		$("#sub-origin-file").attr({"src": s}).Jcrop({
+			setSelect: [0, 0, 0, 0],
+			setImage: s,
+			boxHeight: 200
+			}, function () {
+			sub_ori_jcrop = this;
+			click_continue = 1;
+		});
+		var info_obj = {imgurl: imgUrl, gender: gender, style: style};
+		submit(2, info_obj, callback_uploadImage);
+		
+		is_search = 0;
+		click_continue = 1;
+		$("#region-upload-btn").html('Search');
+	};
+	var info_obj = {url: url};
+	submit(3, info_obj, callback_uploadByUrl);
+}
+*/
 
 /* Tools */
 function setImgUrl(s)

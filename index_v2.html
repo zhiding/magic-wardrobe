@@ -81,13 +81,17 @@
 
     <!-- Page Content -->
     <ul class="col-md-offset-1 col-md-10 breadcrumb" role="tablist">
-        <li class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
+        <li class="active"><a id="upload-a" href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
         <li style="display: none;"><a id="search-a" href="#search-tab" aria-controls="search-tab" role="tab" data-toggle="tab">Search</a></li>
         <li style="display: none;"><a id="substitute-a" href="#substitute" aria-controls="substitute" role="tab" data-toggle="tab">Substitute</a></li>
     </ul>
     <div class="container text-center">
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" style="margin: 180px 0" id="upload">
+			<div id="back-im">
+				<img id="back-im-inner" src="logo_grid.PNG">
+			</div>
+            <div role="tabpanel" class="tab-pane active" style="margin: 25vh 0" id="upload">
+				
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="center-block">Try it out with your own image</h1>
@@ -108,13 +112,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="fileupload-imgurl-btn" type="submit" class="go btn btn-primary input-wide" value="Use the Url">
+                                    <input id="fileupload-imgurl-btn" type="button" class="go btn btn-primary input-wide" value="Use the Url">
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="btn btn-primary btn-filled input-wide" type="button" id="upload-files-visual" value="Choose a File Instead">
                                     <input type="file" class="send-form" id="upload-files" name="files[]" data-url="#" multiple>
-                                    <a id="go-search" href="#search" class="btn btn-circle page-scroll">
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -481,6 +483,7 @@
 			$(document).on("keypress", function(event) { 
 				if (event.key == 'z') window.gender = 1;
 				else if (event.key == 'x') window.gender = 0;
+				else if (event.key == 'c') window.gender = -1;
 				else return;
 				console.log("KeyPress: " + event.key + "\nGender: " + window.gender);
 			});
@@ -495,8 +498,7 @@
             });
 
             $('#upload-files-visual').on('click', function() {
-                $("#search").css("visibility", "visible");
-                if (is_second_search == 1) {
+                if (is_second_search == 1 && $("#sub-upload-file").attr("src") != "img/upload.png") {
                     sub_upload_jcrop.destroy();
                     $("#sub-upload-file").attr({
                         "src": "img/upload.png"
@@ -616,7 +618,7 @@
                 var s = $(this).attr("src");
                 console.log(s);
                 jcrop_api.destroy();
-                if (click_continue === 1) {
+                if (click_continue == 1) {
                     sub_ori_jcrop.destroy();
                 }
                 $("#search-file").attr({
@@ -644,6 +646,10 @@
                 click_continue = 1;
                 $("#region-upload-btn").html('Search');
             });
+			
+			$("#substitute").delegate(".search-result", "click", function() {
+				$("#search-a").click();
+			});
 
             $("#sub-search-btn").on("click", function() {
                 $("#image-show-2").css("display", "block");
@@ -661,6 +667,10 @@
             $("#pages-2").delegate("a", "click", function() {
                 toggle_page_2(parseInt($(this).attr("data-id")));
             });
+			
+			$("#upload-a").on("click", function() {
+				window.location.reload();
+			});
         });
     </script>
 

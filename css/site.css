@@ -12,6 +12,10 @@ body {
     line-height: 24px;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 .nav-bar {
     margin-bottom: 20px;
 }
@@ -87,6 +91,19 @@ p.lead {
 
 .form-demo input, button {
     margin-bottom: 10px;
+}
+
+#back-im {
+    position: absolute;
+    opacity: 0.15;
+    width: 100%;
+    height: 75vh;
+    left: 0;
+    top: 120px;
+}
+
+#back-im-inner {
+	height: 100%;
 }
 
 input[type=submit] {

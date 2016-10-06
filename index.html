@@ -103,7 +103,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <input id="fileupload-imgurl-btn" type="submit" class="go btn btn-primary input-wide" value="Use the Url">
+                            <input id="fileupload-imgurl-btn" type="button" class="go btn btn-primary input-wide" value="Use the Url">
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <input class="btn btn-primary btn-filled input-wide" type="button" id="upload-files-visual" value="Choose a File Instead">
@@ -632,6 +632,10 @@
 
 			$("#pages-2").delegate("a", "click", function() {
 				toggle_page_2(parseInt($(this).attr("data-id")));
+			});
+			
+			$("#fileupload-imgurl-btn").on("click", function() {
+				uploadByUrl($("#imgurl").val());
 			});
         });
         
