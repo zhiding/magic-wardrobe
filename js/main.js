@@ -201,7 +201,7 @@ function toggle_page(k) {
     $("#image-show-1").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][1] + '"><img class="search-result" src="' + img_addrs[i][0] + '"/></div>';
+        var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][2] + '"><img class="search-result" src="' + img_addrs[i][0] + '"/></div>';
         $("#image-show-1").append(dom);
     }
     $("#image-show-1").flexImages({rowHeight: 140});
@@ -369,7 +369,7 @@ function toggle_page_2(k) {
     $("#image-show-2").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs_2.length, k * perCount);i++)
     {
-        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][1] + '"><img class="search-result" src="' + img_addrs_2[i][0] + '"/></div>';
+        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][2] + '"><img class="search-result" src="' + img_addrs_2[i][0] + '"/></div>';
         $("#image-show-2").append(dom);
     }
     $("#image-show-2").flexImages({rowHeight: 140});
