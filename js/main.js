@@ -91,12 +91,14 @@ function regionDetection(file) {
     reader.onload = function() {
         imageBinary = this.result;
         var im = new Image();
+		im.onload = function() { 
+			image_size = [im.width, im.height];
+			uploadImage(imageBinary, function() {
+				var info_obj = {imgurl: imgUrl, gender: gender, style: style};
+				submit(2, info_obj, callback_uploadImage);
+			}, 0);
+		};
         im.src = imageBinary;
-        image_size = [im.width, im.height];
-		uploadImage(imageBinary, function() {
-			var info_obj = {imgurl: imgUrl, gender: gender, style: style};
-			submit(2, info_obj, callback_uploadImage);
-		}, 0);
     }
 	imgSubPlane = "";
     reader.readAsDataURL(file);
@@ -145,7 +147,9 @@ function callback_uploadImage(result) {
 // After you modify the region of the query image, you can click on a button, and ...
 function firstRetrieval() {
     var selection = jcrop_api.getSelection();
-    var portion = [image_size[0] / 350, image_size[1] / 350];
+	var container = jcrop_api.getContainerSize();
+
+    var portion = [image_size[0] / container[0], image_size[1] / container[1]];
     var new_selection = [selection.x * portion[0],selection.y * portion[1],selection.w * portion[0],selection.h * portion[1]];
     parseInt_array(new_selection);
 	window.selection = new_selection;
@@ -279,9 +283,11 @@ function uploadSubPlane(file) {
     reader.onload = function() {
         var subPlaneImageBinary = this.result;
         var im = new Image();
+		im.onload = function() {
+			image_plane_size = [im.width, im.height];
+			uploadImage(subPlaneImageBinary, false, 1);
+		}
         im.src = subPlaneImageBinary;
-        image_plane_size = [im.width, im.height];
-		uploadImage(subPlaneImageBinary, false, 1);
     }
     reader.readAsDataURL(file);
 }
@@ -297,8 +303,11 @@ function secondRetrieval() {
     
     if (imgSubPlane != "")
     {
-        var portion = [image_size[0] / 200, image_size[1] / 200];
-        var portion_plane = [image_plane_size[0] / 200, image_plane_size[1] / 200];
+		var container = sub_ori_jcrop.getContainerSize();
+		var container_plane = sub_upload_jcrop.getContainerSize();
+		
+        var portion = [image_size[0] / container[0], image_size[1] / container[1]];
+        var portion_plane = [image_plane_size[0] / container_plane[0], image_plane_size[1] / container_plane[1]];
 
         var selection_a = sub_ori_jcrop.getSelection();
         attr_areas[0] = [selection_a.x * portion[0],selection_a.y * portion[1],selection_a.w * portion[0],selection_a.h * portion[1]];

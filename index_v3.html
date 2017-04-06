@@ -284,14 +284,17 @@
                             </div>
                         </div>
 					</div>
-                    <div class="flex-images-wrapper col-md-7 col-xs-12">
+                    <div class="flex-images-wrapper col-md-7 col-xs-12" style="height:500px;">
+						<!--
                         <div class="flex-images" id="image-show-1" style="display: none;">
                             <div class="item" data-w="800" data-h="400"><img class="search-result" src="img/loading.gif"></div>
                         </div>
                         <nav id="pages">
                         </nav>
+						-->
+						<iframe src="3dwall.html" name="iframeSon" id="iframeSon" style="width:100%;height:100%;" frameborder="0"></iframe>
                     </div>
-                </div>
+				</div>
             </div>
             <div role="tabpanel" class="tab-pane" id="substitute">
                 <div class="row">
@@ -549,6 +552,9 @@
                 $(".flex-images").css("display", "none");
 				$("#search-a").parent().show();
 				$("#search-a").click();
+                
+                // Show 3dwall
+                window.frames["iframeSon"].location.reload();
             });
 
             $("#sub-upload-files").on("change", function() {
@@ -672,9 +678,9 @@
                 toggle_page_2(parseInt($(this).attr("data-id")));
             });
 			
-			$("#upload-a").on("click", function() {
-				window.location.reload();
-			});
+            $("#upload-a").on("click", function() {
+                window.location.reload();
+            });
         });
     </script>
 </body>

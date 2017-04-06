@@ -295,10 +295,10 @@
                     <div class="col-md-5 col-sm-12">
                         <div class="row">
                             <div class="col-md-5 search-image-wrap">
-                                <img id="sub-origin-file" class="img-responsive" src="" alt="">
+                                <img id="sub-origin-file" class="img-responsive" width="200" height="200" src="" alt="">
                             </div>
                             <div class="col-md-5 search-image-wrap">
-                                <img id="sub-upload-file" class="img-responsive" src="img/upload.png" style="margin-top: 50px; max-width: 100px; max-height: 100px"></img>
+                                <img id="sub-upload-file" class="img-responsive" width="200" height="200" src="img/upload.png" style="margin-top: 50px; max-width: 100px; max-height: 100px"></img>
                             </div>
                         </div>
                         <div class="row">
@@ -431,8 +431,9 @@
                                 </div>
                                 <div class="row tag-predictions">
                                     <div class="predict-group input-group colorpicker-component">
+										<input type="text" value="#00AABB" class="form-control" />
                                         <span class="color input-group-addon"><i></i></span>
-                                        <input type="text" value="#00AABB" class="form-control" />
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -520,7 +521,7 @@
                 $("#search-file").attr({
                     'src': src
                 }).Jcrop({
-                    setSelect: [0, 0, 0, 0],
+                    setSelect: [0, 0, 500, 500],
                     setImage: src,
                     boxHeight: 350
                 }, function() {
@@ -555,7 +556,7 @@
                 $("#sub-upload-file").attr({
                     "src": src
                 }).Jcrop({
-                    setSelect: [0, 0, 0, 0],
+                    setSelect: [0, 0, 500, 500],
                     setImage: src,
                     boxHeight: 200
                 }, function() {
@@ -563,6 +564,7 @@
                 });
                 is_second_search = 1;
             });
+			
 
             $("#region-upload-btn").on('click', function() {
                 if (is_search === 0) {
@@ -591,7 +593,7 @@
                     $("#sub-origin-file").attr({
                         "src": upload_src
                     }).Jcrop({
-                        setSelect: [0, 0, 0, 0],
+                        setSelect: [0, 0, 500, 500],
                         setImage: upload_src,
                         boxHeight: 200
                     }, function() {
@@ -624,7 +626,7 @@
                 $("#search-file").attr({
                     "src": s
                 }).Jcrop({
-                    setSelect: [0, 0, 0, 0],
+                    setSelect: [0, 0, 500, 500],
                     setImage: s,
                     boxHeight: 350
                 }, function() {
@@ -633,7 +635,7 @@
                 $("#sub-origin-file").attr({
                     "src": s
                 }).Jcrop({
-                    setSelect: [0, 0, 0, 0],
+                    setSelect: [0, 0, 500, 500],
                     setImage: s,
                     boxHeight: 200
                 }, function() {
