@@ -167,7 +167,7 @@ function callback_firstRetrieval(result) {
     $(result).find('RESULT').each(function() {
         tmp.push($(this).text());
     });
-    if (tmp.length < 4 || tmp.length < 4 + parseInt(tmp[3])) alert("FATAL ERROR");
+    if (tmp.length < 4 || tmp.length < 4 + parseInt(tmp[3])) { alert("FATAL ERROR"); return; }
     color = [parseFloat(tmp[0]), parseFloat(tmp[1]), parseFloat(tmp[2])];
     color_backup = [parseFloat(tmp[0]), parseFloat(tmp[1]), parseFloat(tmp[2])];
     for (var i = 4;i < parseInt(tmp[3]) + 4;i++)
@@ -175,11 +175,15 @@ function callback_firstRetrieval(result) {
         attrs[i - 4] = attrs_backup[i - 4] = parseInt(tmp[i]);
     }
     img_addrs = [];
+	img_tmp = [];
     for (var i = 4 + parseInt(tmp[3]);i < tmp.length;i += 3)
     {
         // TODO: result here
         img_addrs.push([tmp[i], tmp[i+1], tmp[i+2]]);
+		img_tmp.push({"src":tmp[i], "data_w":tmp[i+1], "data_h":tmp[i+2]});
     }
+	// img_tmp = [{"src":"img/1.jpg", "data_w":200, "data_h":200}];
+	window.frames["iframeSon"].do_it(img_tmp);
     firstRetrieval_setAttrs();
 }
 
@@ -201,7 +205,7 @@ function toggle_page(k) {
     $("#image-show-1").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs.length, k * perCount);i++)
     {
-        var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][1] + '"><img class="search-result" src="' + img_addrs[i][0] + '"/></div>';
+        var dom = '<div class="item" data-w="' + img_addrs[i][1] + '" data-h="' + img_addrs[i][2] + '"><img class="search-result" src="' + img_addrs[i][0] + '"/></div>';
         $("#image-show-1").append(dom);
     }
     $("#image-show-1").flexImages({rowHeight: 140});
@@ -234,9 +238,44 @@ function firstRetrieval_setAttrs() {
     }
     $(".colorpicker-element").colorpicker("setValue", color_hex);
     console.log("color_hex:", color_hex);
+	/*
     page_init();
     toggle_page(1);
+	*/
 }
+
+var search_result_callback = function(s, w, h) {
+	$("#search-a").click();
+	jcrop_api.destroy();
+	if (click_continue == 1) {
+		sub_ori_jcrop.destroy();
+	}
+	$("#search-file").attr({
+		"src": s
+	}).Jcrop({
+		setSelect: [0, 0, 0, 0],
+		setImage: s,
+		boxHeight: 350
+	}, function() {
+		jcrop_api = this;
+	});
+	$("#sub-origin-file").attr({
+		"src": s
+	}).Jcrop({
+		setSelect: [0, 0, 0, 0],
+		setImage: s,
+		boxHeight: 200
+	}, function() {
+		sub_ori_jcrop = this;
+		click_continue = 1;
+	});
+	setImgUrl(s);
+	image_size = [parseInt(w), parseInt(h)];
+	is_search = 0;
+	click_continue = 1;
+	$("#region-upload-btn").html('Search');
+	window.frames["iframeSon"].location.reload();
+};
 /*
 function rgb2h(r, g, b) {
     max = Math.max(r, g, b);
@@ -335,13 +374,15 @@ function callback_secondRetrieval(result) {
         tmp.push($(this).text());
     });
     img_addrs_2 = [];
+	img_tmp_2 = [];
     for (var i = 0;i < tmp.length;i += 3)
     {
         img_addrs_2.push([tmp[i], tmp[i+1], tmp[i+2]]);
+		img_tmp_2.push({"src":tmp[i], "data_w":tmp[i+1], "data_h":tmp[i+2]});
     }
-    page_init_2();
-    toggle_page_2(1);
-	
+    // page_init_2();
+    // toggle_page_2(1);
+	window.frames["iframeSon2"].do_it(img_tmp_2);
 	// Destroy the image crop anyway.
 	if ($("#sub-upload-file").attr("src") != "img/upload.png") {
 		sub_upload_jcrop.destroy();
@@ -369,7 +410,7 @@ function toggle_page_2(k) {
     $("#image-show-2").html("");
     for (var i = (k - 1) * perCount;i < Math.min(img_addrs_2.length, k * perCount);i++)
     {
-        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][1] + '"><img class="search-result" src="' + img_addrs_2[i][0] + '"/></div>';
+        var dom = '<div class="item" data-w="' + img_addrs_2[i][1] + '" data-h="' + img_addrs_2[i][2] + '"><img class="search-result" src="' + img_addrs_2[i][0] + '"/></div>';
         $("#image-show-2").append(dom);
     }
     $("#image-show-2").flexImages({rowHeight: 140});

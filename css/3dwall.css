@@ -6,7 +6,7 @@ body {
     position: absolute;
     margin: 0px;
     padding: 0px;
-    background: #eee;
+    background: transparent;
     width: 100%;
     height: 100%;
     color: #fff;
@@ -38,7 +38,7 @@ body {
 
 #screen .fog {
     position: absolute; 
-    background: #fff;
+    background: #000;
     opacity: 0.1;
     filter: alpha(opacity=10);
 }
@@ -49,8 +49,8 @@ body {
     top: 1em;
     width: 130px;
     z-index: 30000;
-    background: #000;
-    border: #000 solid 1em;
+    background: #FFF;
+    /* border: #000 solid 1em; */
 }
 
 #bar {
@@ -69,11 +69,11 @@ body {
 }
 
 #bar .loaded { 
-    background: #666;
+    background: #AAA;
 }
 
 #bar .viewed {
-    background: #fff;
+    background: #666;
 }
 
 #bar .selected {

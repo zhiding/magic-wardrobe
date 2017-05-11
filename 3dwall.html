@@ -7,21 +7,21 @@
 
 <style type="text/css">
 html{overflow:hidden;}
-body{position:absolute;margin:0px;padding:0px;background:#eee;width:100%;height:100%;color:#fff;font-family:arial;font-size:0.8em;}
+body{position:absolute;margin:0px;padding:0px;background:transparent;width:100%;height:100%;color:#FFF;font-family:arial;font-size:0.8em;}
 /* screen */
-#screen{position:absolute;width:100%;height:100%;background:#000;overflow:hidden;}
+#screen{position:absolute;width:100%;height:100%;background:transparent;overflow:hidden;}
 #screen img, canvas{position:absolute;left:-9999px;cursor:pointer;image-rendering:optimizeSpeed;}
 #screen .href{border:#FFF dotted 1px;}
-#screen .fog{position:absolute;background:#fff;opacity:0.1;filter:alpha(opacity=10);}
-#command{position:absolute;left:1em;top:1em;width:130px;z-index:30000;background:#000;border:#000 solid 1em;}
-#bar{position:relative;left:1em;top:1em;height:160px;}
+#screen .fog{position:absolute;background:#000;opacity:0.1;filter:alpha(opacity=10);}
+#command{position:absolute;left:1em;top:1em;width:0;z-index:30000;background:transparent;opacity:0.4;}
+#bar{position:relative;left:1em;top:1em;height:320px;}
 #bar .button{position:absolute;background:#222;width:20px;height:20px;cursor:pointer;}
-#bar .loaded{background:#666;}
-#bar .viewed{background:#fff;}
+#bar .loaded{background:#AAA;}
+#bar .viewed{background:#666;}
 #bar .selected{background:#f00;}
 #urlInfo{position:absolute;background:url(img/r.gif) no-repeat 0 4px;visibility:hidden;z-index:30000;padding-left:12px;cursor:pointer;}
 </style>
-
+<script src="js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
 // =============================================================
 //           ===== 3D gallery experiment =====
@@ -40,7 +40,7 @@ var m3D = function () {
         bar,
         selected,
         urlInfo,
-        imagesPath = "img/",
+        imagesPath = "",
         camera = {x:0, y:0, z:-650, s:0, fov: 500},
         nw = 0,
         nh = 0;
@@ -77,6 +77,11 @@ var m3D = function () {
                 this.srcImg = new Image();
                 this.srcImg.src = imagesPath + img.src;
                 this.img = document.createElement("canvas");
+                this.img.setAttribute("data-id", img.src);
+                this.img.setAttribute("data-w", img.data_w);
+                this.img.setAttribute("data-h", img.data_h);
+                // this.img.style.border = "dotted black 1px";
+                this.img.style.opacity = "0.8";
                 this.canvas = true;
                 scr.appendChild(this.img);
             } else {
@@ -109,6 +114,8 @@ var m3D = function () {
                         this.diapo.but.className = "button selected";
                         interpolation(false);
                         selected = this.diapo;
+                        $("canvas").css("opacity", "0.8");
+                        selected.img.style.opacity = "1.0";
                     }
                 }
             }
@@ -218,7 +225,7 @@ var m3D = function () {
             diapo.push( new Diapo(i - 1, o, x, y, z));
             /* ---- transparent frames ---- */
             var k = diapo.length - 1;
-            for (var j = 0; j < 3; j++) {
+            for (var j = 0; j < 1; j++) {
                 var x = Math.round(Math.random() * 4000) - 2000;
                 var y = Math.round(Math.random() * 4000) - 2000;
                 diapo.push( new Diapo(k, null, x, y, z + 100));
@@ -278,7 +285,11 @@ var m3D = function () {
         init : init
     }
 }();
-
+var do_it = function(data) {
+    setTimeout(function() {
+        m3D.init(data);
+    }, 500);
+};
 </script>
 </head>
 
@@ -286,8 +297,6 @@ var m3D = function () {
 
 <div id="screen">
     <div id="command">
-        <h1>The result of filtering</h1>
-        <p>These clothes are quiet good! Take a look!</p>
         <div id="bar"></div>
     </div>
     <div id="urlInfo"></div>
@@ -295,27 +304,20 @@ var m3D = function () {
 
 <script type="text/javascript">
 /* ==== start script ==== */
-setTimeout(function() {
-    m3D.init(
-        [
-            { src: '1.jpg' },
-            { src: '2.jpg' },
-            { src: '3.jpg' },
-            { src: '4.jpg' },
-            { src: '5.jpg' },
-            { src: '6.jpg' },
-            { src: '7.jpg' },
-            { src: '8.jpg' },
-            { src: '9.jpg' },
-            { src: '10.jpg' },
-            { src: '11.jpg' },
-            { src: '12.jpg' },
-            { src: '13.jpg' },
-            { src: '14.jpg' },
-            { src: '15.jpg' },
-        ]
-    );
-}, 500);
+// do_it([{"src":"1.jpg", "data_w": 200, "data_h": 200}]);
+// m3D.init([{"src":"1.jpg", "data_w": 200, "data_h": 200}]);
+var c_a = function() {
+    $(this).stop();
+    $(this).animate({"opacity": 0.6}, "200");
+};
+var c_b = function() {
+    $(this).stop();
+    $(this).animate({"opacity": 0.4}, "200");
+};
+$("#command").hover(c_a, c_b);
+$("#screen").delegate("canvas", "dblclick", function() {
+    parent.search_result_callback($(this).attr("data-id"), $(this).attr("data-w"), $(this).attr("data-h"));
+});
 </script>
 
 </body>
